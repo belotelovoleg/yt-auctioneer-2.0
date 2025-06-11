@@ -1,6 +1,7 @@
 import { PrismaClient, Bid, Lot } from '../generated/prisma';
+import { prisma } from './db';
 
-const prisma = new PrismaClient();
+// Remove the local prisma instance - use the shared one from db.ts
 
 interface BidValidationResult {
   isValid: boolean;

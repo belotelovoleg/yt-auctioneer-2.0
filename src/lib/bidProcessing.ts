@@ -1,7 +1,8 @@
 import { PrismaClient } from '../generated/prisma';
 import { BidValidationService } from './bidValidation';
+import { prisma } from './db';
 
-const prisma = new PrismaClient();
+// Remove local prisma instance - use shared one
 
 interface YouTubeChatBid {
   authorName: string;
@@ -107,22 +108,25 @@ export class BidProcessingService {
 
       // Process each bid in a transaction
       for (const chatBid of sortedBids) {
-        processed++;
+        processed++;        try {
+          // Validate the bid OUTSIDE the transaction first to reduce transaction time
+          const validation = await BidValidationService.validateBid({
+            auctionId,
+            lotId,
+            amount: chatBid.amount,
+            bidderName: chatBid.authorName,
+            source: 'YOUTUBE',
+            messageId: chatBid.messageId
+          });
 
-        try {
+          if (!validation.isValid) {
+            errors.push(`${chatBid.authorName} (${chatBid.amount}): ${validation.error}`);
+            continue;
+          }
+
+          // Now do the actual database operations in a shorter transaction with increased timeout
           const result = await prisma.$transaction(async (tx) => {
-            // Validate the bid
-            const validation = await BidValidationService.validateBid({
-              auctionId,
-              lotId,
-              amount: chatBid.amount,
-              bidderName: chatBid.authorName,
-              source: 'YOUTUBE',
-              messageId: chatBid.messageId
-            });            if (!validation.isValid) {
-              errors.push(`${chatBid.authorName} (${chatBid.amount}): ${validation.error}`);
-              return null;
-            }            // Use adjusted amount if validation provided one (for rounding down to valid increments)
+            // Use adjusted amount if validation provided one (for rounding down to valid increments)
             const finalBidAmount = validation.adjustedAmount || chatBid.amount;
 
             // Check if a higher bid was already processed
@@ -133,11 +137,8 @@ export class BidProcessingService {
                 amount: { gte: finalBidAmount },
                 status: 'ACCEPTED'
               }
-            });
-
-            if (existingHigherBid) {
-              errors.push(`${chatBid.authorName} (${chatBid.amount}): Outbid by higher bid`);
-              return null;
+            });            if (existingHigherBid) {
+              return { error: 'Outbid by higher bid' };
             }// Mark previous winning bids as outbid
             await tx.bid.updateMany({
               where: {
@@ -149,13 +150,15 @@ export class BidProcessingService {
                 isWinning: false,
                 status: 'OUTBID'
               }
-            });            // Create the new bid
+            });
+
+            // Create the new bid
             const newBid = await tx.bid.create({
               data: {
                 auctionId,
                 lotId,
                 bidderName: chatBid.authorName,
-                amount: finalBidAmount, // Use the adjusted amount
+                amount: finalBidAmount,
                 source: 'YOUTUBE',
                 status: 'ACCEPTED',
                 isWinning: true,
@@ -163,22 +166,22 @@ export class BidProcessingService {
                 metadata: {
                   authorPhotoUrl: chatBid.authorPhotoUrl,
                   timestamp: chatBid.timestamp,
-                  originalAmount: chatBid.amount // Keep track of original bid for reference
+                  originalAmount: chatBid.amount
                 }
               }
-            });
-
-            return newBid;
-          });
-
-          if (result) {
+            });            return { bid: newBid };
+          }, {
+            timeout: 15000 // Increase timeout to 15 seconds
+          });          if (result?.bid) {
             created++;
-            currentWinningBid = result;
+            currentWinningBid = result.bid;
+          } else if (result?.error) {
+            errors.push(`${chatBid.authorName} (${chatBid.amount}): ${result.error}`);
           }
 
         } catch (error) {
           console.error(`Error processing bid from ${chatBid.authorName}:`, error);
-          errors.push(`${chatBid.authorName}: Processing error`);
+          errors.push(`${chatBid.authorName}: Processing error - ${error instanceof Error ? error.message : String(error)}`);
         }
       }
 
