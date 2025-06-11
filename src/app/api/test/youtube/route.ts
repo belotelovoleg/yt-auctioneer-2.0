@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { YouTubeService } from '@/lib/youtube';
-import { getEnvVar } from '@/lib/config-env';
+import { YOUTUBE_API_KEY } from '@/lib/config-env';
 
 // GET /api/test/youtube?videoId=xxx - Test YouTube API with detailed logging
 export async function GET(request: NextRequest) {
@@ -12,7 +12,7 @@ export async function GET(request: NextRequest) {
 
     // Step 1: Test basic video info
     console.log('🔍 Step 1: Testing basic video info...');
-    const videoInfoUrl = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet,liveStreamingDetails&key=${getEnvVar('YOUTUBE_API_KEY')}`;
+    const videoInfoUrl = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet,liveStreamingDetails&key=${YOUTUBE_API_KEY}`;
     const videoResponse = await fetch(videoInfoUrl);
     const videoData = await videoResponse.json();
     

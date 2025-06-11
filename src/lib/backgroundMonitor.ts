@@ -1,7 +1,7 @@
 import { prisma } from './db';
 import { BidProcessingService } from './bidProcessing';
 import { YouTubeService } from './youtube';
-import { getEnvVar } from './config-env';
+import { NEXTAUTH_URL } from './config-env';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -625,7 +625,7 @@ export class BackgroundAuctionMonitor {
         apiUrl += `&pageToken=${job.nextPageToken}`;
       }      // Make internal API call to get chat messages
       // Use dynamic base URL that works in both development and production
-      const baseUrl = getEnvVar('NEXTAUTH_URL');
+      const baseUrl = NEXTAUTH_URL;
       const fullUrl = baseUrl.startsWith('http') ? `${baseUrl}${apiUrl}` : `https://${baseUrl}${apiUrl}`;
       
       const response = await fetch(fullUrl, {

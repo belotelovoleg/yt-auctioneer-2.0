@@ -2,18 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 import { jwtVerify } from 'jose';
 import * as XLSX from 'xlsx';
-import { getEnvVar } from '@/lib/config-env';
+import { JWT_SECRET } from '@/lib/config-env';
 
-const JWT_SECRET = new TextEncoder().encode(
-  getEnvVar('JWT_SECRET')
-);
+const JWT_SECRET_ENCODED = new TextEncoder().encode(JWT_SECRET);
 
 async function getUserFromToken(request: NextRequest) {
   try {
     const token = request.cookies.get('auth-token')?.value;
     if (!token) return null;
 
-    const { payload } = await jwtVerify(token, JWT_SECRET);
+    const { payload } = await jwtVerify(token, JWT_SECRET_ENCODED);
     return payload as { userId: number };
   } catch (error) {
     return null;

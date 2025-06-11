@@ -2,18 +2,16 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 import bcrypt from 'bcryptjs';
 import { SignJWT } from 'jose';
-import { getEnvVar } from '@/lib/config-env';
+import { JWT_SECRET, DATABASE_URL, NODE_ENV } from '@/lib/config-env';
 
-const JWT_SECRET = new TextEncoder().encode(
-  getEnvVar('JWT_SECRET')
-);
+const jwtSecret = new TextEncoder().encode(JWT_SECRET);
 
 export async function POST(request: NextRequest) {
   try {
     console.log('🔍 Login attempt started');    console.log('🔍 Environment check:', {
-      NODE_ENV: getEnvVar('NODE_ENV'),
-      DATABASE_URL: getEnvVar('DATABASE_URL') ? 'SET' : 'NOT SET',
-      JWT_SECRET: getEnvVar('JWT_SECRET') ? 'SET' : 'NOT SET'
+      NODE_ENV: NODE_ENV,
+      DATABASE_URL: DATABASE_URL ? 'SET' : 'NOT SET',
+      JWT_SECRET: JWT_SECRET ? 'SET' : 'NOT SET'
     });
 
     const { login, password } = await request.json();
@@ -58,16 +56,16 @@ export async function POST(request: NextRequest) {
         { status: 401 }
       );
     }
-    
-    // Create JWT token
+      // Create JWT token
     const token = await new SignJWT({ 
       userId: user.id, 
       login: user.login 
     })
       .setProtectedHeader({ alg: 'HS256' })
       .setExpirationTime('24h')
-      .sign(JWT_SECRET);
-      // Create response with token in httpOnly cookie
+      .sign(jwtSecret);
+      
+    // Create response with token in httpOnly cookie
     const response = NextResponse.json({
       user: {
         id: user.id,
@@ -75,10 +73,12 @@ export async function POST(request: NextRequest) {
         isActive: user.isActive,
         isAdmin: user.isAdmin,
       },
+      token
     });
-      response.cookies.set('auth-token', token, {
+    
+    response.cookies.set('auth-token', token, {
       httpOnly: true,
-      secure: getEnvVar('NODE_ENV') === 'production',
+      secure: NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 60 * 60 * 24, // 24 hours
     });

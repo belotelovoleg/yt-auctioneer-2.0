@@ -134,18 +134,32 @@ export const YOUTUBE_API_KEY = (() => {
 })();
 
 /**
- * Helper function for getting environment variables with fallbacks
+ * Safe environment variable getter - never throws, always returns a string
  */
-export function getEnvVar(key: string, fallback?: string): string {
+export function getEnvVar(key: string, fallback: string = ''): string {
   const value = process.env[key];
+  logEnvStatus(key, !!value);
   
   if (value) {
     return value;
   }
   
-  if (fallback !== undefined) {
+  if (fallback) {
+    console.log(`🔧 Using fallback for ${key}`);
     return fallback;
   }
   
-  throw new Error(`Environment variable ${key} is required but not set`);
+  // Return a safe fallback that won't crash the app
+  console.warn(`⚠️ ${key} not set, using empty string fallback`);
+  return '';
 }
+
+/**
+ * Get NODE_ENV safely
+ */
+export const NODE_ENV = process.env.NODE_ENV || 'development';
+
+/**
+ * NextAuth URL for OAuth callbacks
+ */
+export const NEXTAUTH_URL = process.env.NEXTAUTH_URL || 'http://localhost:3000';

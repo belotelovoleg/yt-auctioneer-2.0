@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getEnvVar } from '@/lib/config-env';
+import { NODE_ENV } from '@/lib/config-env';
 
 export async function POST() {
   const response = NextResponse.json({ message: 'Logged out successfully' });
@@ -7,7 +7,7 @@ export async function POST() {
   // Clear the auth token cookie
   response.cookies.set('auth-token', '', {
     httpOnly: true,
-    secure: getEnvVar('NODE_ENV') === 'production',
+    secure: NODE_ENV === 'production',
     sameSite: 'lax',
     maxAge: 0, // Expire immediately
   });

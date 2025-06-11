@@ -1,4 +1,4 @@
-import { getEnvVar } from './config-env';
+import { DATABASE_URL } from './config-env';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 
@@ -9,8 +9,8 @@ const execAsync = promisify(exec);
  * This handles the database schema synchronization that can't be done during build
  */
 export async function initializeDatabase(): Promise<boolean> {
-  const nodeEnv = getEnvVar('NODE_ENV');
-  const databaseUrl = getEnvVar('DATABASE_URL');
+  const nodeEnv = process.env.NODE_ENV;
+  const databaseUrl = DATABASE_URL;
   
   console.log('🔄 Initializing database schema...');
   

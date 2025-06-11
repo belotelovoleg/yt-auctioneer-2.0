@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
-import { getEnvVar } from '@/lib/config-env';
+import { NODE_ENV, DATABASE_URL } from '@/lib/config-env';
 
 export async function GET(request: NextRequest) {
   try {
     console.log('🔍 Testing database connection...');
     console.log('🔍 Environment:', {
-      NODE_ENV: getEnvVar('NODE_ENV'),
-      DATABASE_URL: getEnvVar('DATABASE_URL') ? 'SET' : 'NOT SET'
+      NODE_ENV: NODE_ENV,
+      DATABASE_URL: DATABASE_URL ? 'SET' : 'NOT SET'
     });
 
     // Simple database test
@@ -18,7 +18,7 @@ export async function GET(request: NextRequest) {
       status: 'success',
       database: 'connected',
       userCount,
-      environment: getEnvVar('NODE_ENV'),
+      environment: NODE_ENV,
       timestamp: new Date().toISOString()
     });
   } catch (error) {
