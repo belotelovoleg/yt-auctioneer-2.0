@@ -24,6 +24,18 @@ const nextConfig: NextConfig = {
     // Ensure environment variables are properly passed to Lambda functions
     serverComponentsExternalPackages: ['@prisma/client'],
   },
+  
+  // Force AWS Amplify to pass environment variables to Lambda functions
+  // This is critical for AWS Amplify SSR deployment
+  generateBuildId: () => {
+    // Also log environment status during build for debugging
+    console.log('🔧 Build-time environment check:');
+    console.log('DATABASE_URL:', !!process.env.DATABASE_URL ? 'SET' : 'NOT SET');
+    console.log('JWT_SECRET:', !!process.env.JWT_SECRET ? 'SET' : 'NOT SET');
+    console.log('NEXTAUTH_SECRET:', !!process.env.NEXTAUTH_SECRET ? 'SET' : 'NOT SET');
+    console.log('YOUTUBE_API_KEY:', !!process.env.YOUTUBE_API_KEY ? 'SET' : 'NOT SET');
+    return 'amplify-build-' + Date.now();
+  },
 };
 
 export default nextConfig;
