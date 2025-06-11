@@ -43,8 +43,8 @@ interface Lot {
   name: string;
   description: string;
   photo?: string;
-  startingPrice: number;
-  finalPrice?: number;
+  startingPrice: number | string;
+  finalPrice?: number | string;
   status: string;
 }
 
@@ -57,7 +57,7 @@ interface AuctionLot {
 interface Bid {
   id: number;
   bidderName: string;
-  amount: number;
+  amount: number | string;
   source: string;
   status: string;
   isWinning: boolean;
@@ -78,11 +78,11 @@ interface AuctionResults {
   winningBids: Bid[];
   totalSoldLots: number;
   totalBids: number;
-  totalRevenue: number;
+  totalRevenue: number | string;
   uniqueBidders: number;
   buyerSummary: {
     bidderName: string;
-    totalSpent: number;
+    totalSpent: number | string;
     lotsWon: number;
     bids: Bid[];
   }[];
@@ -195,9 +195,9 @@ export default function AuctionResultsPage() {
       setSortDirection('desc');
     }
   };
-
-  const formatCurrency = (amount: number): string => {
-    return amount.toFixed(0);
+  const formatCurrency = (amount: number | string): string => {
+    const numAmount = typeof amount === 'string' ? parseFloat(amount) : amount;
+    return isNaN(numAmount) ? '0' : numAmount.toFixed(0);
   };
 
   const handleExportExcel = async () => {
