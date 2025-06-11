@@ -6,7 +6,8 @@ frontend:
         - npm ci
         - npx prisma generate
         # Skip db push during build - will be handled at runtime
-        # - npx prisma db push --accept-data-loss    build:
+        # - npx prisma db push --accept-data-loss
+    build:
       commands:
         - echo "Building with environment variables for SSR..."
         - echo "NODE_ENV=$NODE_ENV"
