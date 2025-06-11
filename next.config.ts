@@ -5,10 +5,11 @@ const nextConfig: NextConfig = {
   
   // Ensure environment variables are available in serverless functions
   serverExternalPackages: ['@prisma/client'],
-  
-  // Define which environment variables should be available in the browser (if any)
+    // Define which environment variables should be available in the browser (if any)
   // Note: Only put non-sensitive variables here
   env: {
+    // AWS Amplify sometimes needs these for proper SSR handling
+    NODE_ENV: process.env.NODE_ENV,
     // Add any client-side environment variables here if needed
     // NEXT_PUBLIC_APP_NAME: process.env.NEXT_PUBLIC_APP_NAME,
   },
