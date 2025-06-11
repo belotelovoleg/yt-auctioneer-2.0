@@ -70,12 +70,27 @@ export const JWT_SECRET = (() => {
   throw new Error('JWT_SECRET environment variable is required in production');
 })();
 
-// NextAuth Secret
-export const NEXTAUTH_SECRET = getEnvWithFallback(
-  'NEXTAUTH_SECRET',
-  'dev-nextauth-secret-change-in-production',
-  true
-);
+// NextAuth Secret with AWS Lambda fallback (same logic as JWT_SECRET)
+export const NEXTAUTH_SECRET = (() => {
+  const value = process.env.NEXTAUTH_SECRET;
+  logEnvStatus('NEXTAUTH_SECRET', !!value);
+  
+  if (value) return value;
+  
+  if (process.env.NODE_ENV === 'development') {
+    console.log('🔧 Using development NEXTAUTH fallback');
+    return 'dev-nextauth-secret-change-in-production';
+  }
+  
+  // AWS Lambda specific fallback
+  if (process.env.AWS_REGION) {
+    const fallback = `aws-lambda-nextauth-${process.env.AWS_REGION}-fallback`;
+    console.log('🔧 Using AWS Lambda NEXTAUTH fallback for region:', process.env.AWS_REGION);
+    return fallback;
+  }
+  
+  throw new Error('NEXTAUTH_SECRET environment variable is required in production');
+})();
 
 // YouTube API Key
 export const YOUTUBE_API_KEY = getEnvWithFallback(
