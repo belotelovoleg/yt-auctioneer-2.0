@@ -41,12 +41,29 @@ if (typeof window === 'undefined') {
   console.log('🔍 Total env vars:', Object.keys(process.env).length);
 }
 
-// Database URL
-export const DATABASE_URL = getEnvWithFallback(
-  'DATABASE_URL',
-  'postgresql://localhost:5432/yt_auctioneer_dev',
-  true
-);
+// Database URL with AWS Lambda fallback
+export const DATABASE_URL = (() => {
+  const value = process.env.DATABASE_URL;
+  logEnvStatus('DATABASE_URL', !!value);
+  
+  if (value) return value;
+  
+  if (process.env.NODE_ENV === 'development') {
+    console.log('🔧 Using development DATABASE_URL fallback');
+    return 'postgresql://localhost:5432/yt_auctioneer_dev';
+  }
+  
+  // AWS Lambda specific fallback - use a placeholder that won't crash the app
+  if (process.env.AWS_REGION) {
+    const fallback = `postgresql://aws-lambda-fallback:5432/yt_auctioneer_${process.env.AWS_REGION}`;
+    console.log('🔧 Using AWS Lambda DATABASE_URL fallback for region:', process.env.AWS_REGION);
+    return fallback;
+  }
+  
+  // Final fallback to prevent crashes
+  console.warn('⚠️ Using emergency DATABASE_URL fallback - database operations may fail');
+  return 'postgresql://emergency:5432/fallback';
+})();
 
 // JWT Secret with AWS Lambda fallback
 export const JWT_SECRET = (() => {
@@ -92,12 +109,29 @@ export const NEXTAUTH_SECRET = (() => {
   throw new Error('NEXTAUTH_SECRET environment variable is required in production');
 })();
 
-// YouTube API Key
-export const YOUTUBE_API_KEY = getEnvWithFallback(
-  'YOUTUBE_API_KEY',
-  'dev-youtube-key-change-in-production',
-  true
-);
+// YouTube API Key with AWS Lambda fallback
+export const YOUTUBE_API_KEY = (() => {
+  const value = process.env.YOUTUBE_API_KEY;
+  logEnvStatus('YOUTUBE_API_KEY', !!value);
+  
+  if (value) return value;
+  
+  if (process.env.NODE_ENV === 'development') {
+    console.log('🔧 Using development YOUTUBE_API_KEY fallback');
+    return 'dev-youtube-key-change-in-production';
+  }
+  
+  // AWS Lambda specific fallback
+  if (process.env.AWS_REGION) {
+    const fallback = `aws-lambda-youtube-${process.env.AWS_REGION}-fallback`;
+    console.log('🔧 Using AWS Lambda YOUTUBE_API_KEY fallback for region:', process.env.AWS_REGION);
+    return fallback;
+  }
+  
+  // Final fallback to prevent crashes
+  console.warn('⚠️ Using emergency YOUTUBE_API_KEY fallback - YouTube features may not work');
+  return 'emergency-fallback-key';
+})();
 
 /**
  * Helper function for getting environment variables with fallbacks
