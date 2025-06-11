@@ -1,7 +1,7 @@
 import { prisma } from './db';
 import { BidProcessingService } from './bidProcessing';
 import { YouTubeService } from './youtube';
-import { NEXTAUTH_URL } from './config-env';
+import { NEXTAUTH_URL, NODE_ENV } from './config-env';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -624,9 +624,19 @@ export class BackgroundAuctionMonitor {
       if (job.nextPageToken) {
         apiUrl += `&pageToken=${job.nextPageToken}`;
       }      // Make internal API call to get chat messages
-      // Use dynamic base URL that works in both development and production
-      const baseUrl = NEXTAUTH_URL;
+      // Use environment-appropriate base URL
+      let baseUrl: string;
+        // In development, always use localhost
+      if (NODE_ENV === 'development') {
+        baseUrl = 'http://localhost:3000';  // Use the correct dev server port (3000, not 3001)
+      } else {
+        // In production, use the configured NEXTAUTH_URL
+        baseUrl = NEXTAUTH_URL.replace(/['"]/g, '').trim();
+      }
+      
       const fullUrl = baseUrl.startsWith('http') ? `${baseUrl}${apiUrl}` : `https://${baseUrl}${apiUrl}`;
+      
+      console.log(`🔗 Constructed URL (${NODE_ENV}): ${fullUrl}`);
       
       const response = await fetch(fullUrl, {
         headers: {

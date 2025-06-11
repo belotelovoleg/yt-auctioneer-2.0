@@ -18,11 +18,13 @@ if (typeof window === 'undefined') {
       const lines = envContent.split('\n');
       
       for (const line of lines) {
-        const trimmedLine = line.trim();
-        if (trimmedLine && !trimmedLine.startsWith('#')) {
+        const trimmedLine = line.trim();        if (trimmedLine && !trimmedLine.startsWith('#')) {
           const [key, ...valueParts] = trimmedLine.split('=');
           if (key && valueParts.length > 0) {
-            productionEnvVars[key] = valueParts.join('=');
+            // Join the value parts and remove surrounding quotes
+            const rawValue = valueParts.join('=');
+            const cleanValue = rawValue.replace(/^["']|["']$/g, '').trim();
+            productionEnvVars[key] = cleanValue;
           }
         }
       }
@@ -45,6 +47,11 @@ function getEnvVar(key: string, fallback: string = ''): string {
   if (!value && productionEnvVars[key]) {
     value = productionEnvVars[key];
     console.log(`🔧 Using .env.production value for ${key}`);
+  }
+  
+  // Clean the value by removing surrounding quotes
+  if (value) {
+    value = value.replace(/^["']|["']$/g, '').trim();
   }
   
   if (typeof window === 'undefined') {

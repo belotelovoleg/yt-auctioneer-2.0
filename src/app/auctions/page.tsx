@@ -130,12 +130,11 @@ export default function AuctionsPage() {
       
       // Convert the date to the proper format for datetime-local input
       const dateForInput = auction.date ? new Date(auction.date).toISOString().slice(0, 16) : "";
-      
-      setFormData({
+        setFormData({
         name: auction.name,
         description: auction.description,
         date: dateForInput, // Fixed date formatting
-        youtubeChannelId: auction.youtubeChannelId,
+        youtubeChannelId: auction.youtubeChannelId || "",
         youtubeVideoId: auction.youtubeVideoId || "",
         useTimer: auction.useTimer !== undefined ? auction.useTimer : true,
       });
@@ -171,10 +170,9 @@ export default function AuctionsPage() {
     }
     setDialogOpen(false);
     setEditingAuction(null);
-  };
-  const handleSave = async () => {
+  };  const handleSave = async () => {
     try {      // Client-side validation
-      if (!formData.name.trim()) {
+      if (!formData.name || !formData.name.trim()) {
         setAlertMessage({
           type: "error",
           message: t("auction_nameRequired", lang),
@@ -182,7 +180,10 @@ export default function AuctionsPage() {
         return;
       }
 
-      if (!formData.youtubeChannelId.trim() && !formData.youtubeVideoId.trim()) {
+      const channelId = formData.youtubeChannelId || "";
+      const videoId = formData.youtubeVideoId || "";
+      
+      if (!channelId.trim() && !videoId.trim()) {
         setAlertMessage({
           type: "error",
           message: t("auction_youtubeRequired", lang),
