@@ -3,7 +3,7 @@ import { prisma } from '@/lib/db';
 import { jwtVerify } from 'jose';
 import { BidProcessingService } from '@/lib/bidProcessing';
 import { BackgroundAuctionMonitor } from '@/lib/backgroundMonitor';
-import { getEnvVar } from '@/lib/env-config';
+import { getEnvVar } from '@/lib/config-env';
 
 const JWT_SECRET = new TextEncoder().encode(
   getEnvVar('JWT_SECRET')

@@ -1,7 +1,7 @@
 import { prisma } from './db';
 import { BidProcessingService } from './bidProcessing';
 import { YouTubeService } from './youtube';
-import { getEnvVar } from './env-config';
+import { getEnvVar } from './config-env';
 import * as fs from 'fs';
 import * as path from 'path';
 

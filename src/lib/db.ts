@@ -1,5 +1,5 @@
 import { PrismaClient } from '../generated/prisma'
-import { DATABASE_URL } from './env-config'
+import { DATABASE_URL } from './config-env'
 
 // Configure DATABASE_URL with fallback
 const databaseUrl = DATABASE_URL

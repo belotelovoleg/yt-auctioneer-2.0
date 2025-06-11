@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 import { jwtVerify } from 'jose';
-import { getEnvVar } from '@/lib/env-config';
+import { getEnvVar } from '@/lib/config-env';
 import bcrypt from 'bcryptjs';
 
 const JWT_SECRET = new TextEncoder().encode(

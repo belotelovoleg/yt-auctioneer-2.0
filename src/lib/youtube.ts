@@ -1,5 +1,5 @@
 // YouTube Data API v3 service
-import { YOUTUBE_API_KEY } from './env-config';
+import { YOUTUBE_API_KEY } from './config-env';
 
 interface LiveStreamDetails {
   activeLiveChatId?: string;

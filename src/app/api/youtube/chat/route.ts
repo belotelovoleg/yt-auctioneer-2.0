@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { YouTubeService } from '@/lib/youtube';
 import { jwtVerify } from 'jose';
-import { getEnvVar } from '@/lib/env-config';
+import { getEnvVar } from '@/lib/config-env';
 
 const JWT_SECRET = new TextEncoder().encode(
   getEnvVar('JWT_SECRET')

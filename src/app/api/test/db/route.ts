@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
-import { getEnvVar } from '@/lib/env-config';
+import { getEnvVar } from '@/lib/config-env';
 
 export async function GET(request: NextRequest) {
   try {

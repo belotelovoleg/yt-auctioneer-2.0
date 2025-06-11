@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import { NextRequest } from 'next/server';
 import { prisma } from './db';
-import { JWT_SECRET } from './env-config';
+import { JWT_SECRET } from './config-env';
 
 interface User {
   id: number;

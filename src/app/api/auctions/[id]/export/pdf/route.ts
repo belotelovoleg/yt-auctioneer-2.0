@@ -3,7 +3,7 @@ import { prisma } from '@/lib/db';
 import { jwtVerify } from 'jose';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-import { getEnvVar } from '@/lib/env-config';
+import { getEnvVar } from '@/lib/config-env';
 
 // Extend jsPDF type to include autoTable
 declare module 'jspdf' {

@@ -1,4 +1,4 @@
-import { getEnvVar } from './env-config';
+import { getEnvVar } from './config-env';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 

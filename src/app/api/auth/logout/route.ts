@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getEnvVar } from '@/lib/env-config';
+import { getEnvVar } from '@/lib/config-env';
 
 export async function POST() {
   const response = NextResponse.json({ message: 'Logged out successfully' });

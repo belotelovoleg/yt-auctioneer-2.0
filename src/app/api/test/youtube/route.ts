@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { YouTubeService } from '@/lib/youtube';
-import { getEnvVar } from '@/lib/env-config';
+import { getEnvVar } from '@/lib/config-env';
 
 // GET /api/test/youtube?videoId=xxx - Test YouTube API with detailed logging
 export async function GET(request: NextRequest) {
