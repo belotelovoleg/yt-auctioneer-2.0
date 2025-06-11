@@ -1,165 +1,74 @@
 /**
  * Environment configuration for AWS Amplify
- * Handles AWS Lambda environment variable loading properly
+ * Handles AWS Lambda environment variable loading with .env.production fallback
  */
 
-// Helper function to safely log environment status
-function logEnvStatus(key: string, exists: boolean) {
-  if (typeof window === 'undefined') { // Server-side only
-    console.log(`🔍 ${key}:`, exists ? 'SET' : 'NOT SET');
+import * as fs from 'fs';
+import * as path from 'path';
+
+// Load environment variables from .env.production if process.env doesn't have them
+let productionEnvVars: Record<string, string> = {};
+
+// Try to load .env.production file as fallback for AWS Lambda
+if (typeof window === 'undefined') {
+  try {
+    const envProductionPath = path.join(process.cwd(), '.env.production');
+    if (fs.existsSync(envProductionPath)) {
+      const envContent = fs.readFileSync(envProductionPath, 'utf8');
+      const lines = envContent.split('\n');
+      
+      for (const line of lines) {
+        const trimmedLine = line.trim();
+        if (trimmedLine && !trimmedLine.startsWith('#')) {
+          const [key, ...valueParts] = trimmedLine.split('=');
+          if (key && valueParts.length > 0) {
+            productionEnvVars[key] = valueParts.join('=');
+          }
+        }
+      }
+      
+      console.log(`📁 Loaded ${Object.keys(productionEnvVars).length} variables from .env.production`);
+    } else {
+      console.log('📁 No .env.production file found');
+    }
+  } catch (error) {
+    console.warn('⚠️ Failed to load .env.production:', error);
   }
 }
 
-// Helper function to get environment variable with detailed logging
-function getEnvWithFallback(key: string, devFallback: string, prodRequired: boolean = true) {
-  const value = process.env[key];
-  logEnvStatus(key, !!value);
+// Helper function to get environment variable with .env.production fallback
+function getEnvVar(key: string, fallback: string = ''): string {
+  // First try process.env
+  let value = process.env[key];
   
-  if (value) {
-    return value;
+  // If not found, try .env.production
+  if (!value && productionEnvVars[key]) {
+    value = productionEnvVars[key];
+    console.log(`🔧 Using .env.production value for ${key}`);
   }
   
-  // Development fallback
-  if (process.env.NODE_ENV === 'development') {
-    console.log(`🔧 Using development fallback for ${key}`);
-    return devFallback;
+  if (typeof window === 'undefined') {
+    console.log(`🔍 ${key}:`, value ? 'SET' : 'NOT SET');
   }
   
-  // Production environment
-  if (prodRequired) {
-    console.error(`❌ ${key} is required in production but not set`);
-    throw new Error(`${key} environment variable is required in production`);
-  }
-  
-  return devFallback;
+  return value || fallback;
 }
 
 // Log overall environment status
 if (typeof window === 'undefined') {
-  console.log('🌍 Environment:', process.env.NODE_ENV);
+  console.log('🌍 Environment:', process.env.NODE_ENV || 'unknown');
   console.log('🔍 AWS Region:', process.env.AWS_REGION || 'Not set');
-  console.log('🔍 Total env vars:', Object.keys(process.env).length);
+  console.log('🔍 Total process.env vars:', Object.keys(process.env).length);
+  console.log('🔍 Total .env.production vars:', Object.keys(productionEnvVars).length);
 }
 
-// Database URL with AWS Lambda fallback
-export const DATABASE_URL = (() => {
-  const value = process.env.DATABASE_URL;
-  logEnvStatus('DATABASE_URL', !!value);
-  
-  if (value) return value;
-  
-  if (process.env.NODE_ENV === 'development') {
-    console.log('🔧 Using development DATABASE_URL fallback');
-    return 'postgresql://localhost:5432/yt_auctioneer_dev';
-  }
-  
-  // AWS Lambda specific fallback - use a placeholder that won't crash the app
-  if (process.env.AWS_REGION) {
-    const fallback = `postgresql://aws-lambda-fallback:5432/yt_auctioneer_${process.env.AWS_REGION}`;
-    console.log('🔧 Using AWS Lambda DATABASE_URL fallback for region:', process.env.AWS_REGION);
-    return fallback;
-  }
-  
-  // Final fallback to prevent crashes
-  console.warn('⚠️ Using emergency DATABASE_URL fallback - database operations may fail');
-  return 'postgresql://emergency:5432/fallback';
-})();
+// Export environment variables using the new helper function
+export const DATABASE_URL = getEnvVar('DATABASE_URL', 'postgresql://localhost:5432/yt_auctioneer_dev');
+export const JWT_SECRET = getEnvVar('JWT_SECRET', 'dev-jwt-secret-change-in-production');
+export const NEXTAUTH_SECRET = getEnvVar('NEXTAUTH_SECRET', 'dev-nextauth-secret-change-in-production');
+export const YOUTUBE_API_KEY = getEnvVar('YOUTUBE_API_KEY', 'dev-youtube-key-change-in-production');
+export const NODE_ENV = getEnvVar('NODE_ENV', 'development');
+export const NEXTAUTH_URL = getEnvVar('NEXTAUTH_URL', 'http://localhost:3000');
 
-// JWT Secret with AWS Lambda fallback
-export const JWT_SECRET = (() => {
-  const value = process.env.JWT_SECRET;
-  logEnvStatus('JWT_SECRET', !!value);
-  
-  if (value) return value;
-  
-  if (process.env.NODE_ENV === 'development') {
-    console.log('🔧 Using development JWT fallback');
-    return 'dev-jwt-secret-change-in-production';
-  }
-  
-  // AWS Lambda specific fallback
-  if (process.env.AWS_REGION) {
-    const fallback = `aws-lambda-jwt-${process.env.AWS_REGION}-fallback`;
-    console.log('🔧 Using AWS Lambda JWT fallback for region:', process.env.AWS_REGION);
-    return fallback;
-  }
-  
-  throw new Error('JWT_SECRET environment variable is required in production');
-})();
-
-// NextAuth Secret with AWS Lambda fallback (same logic as JWT_SECRET)
-export const NEXTAUTH_SECRET = (() => {
-  const value = process.env.NEXTAUTH_SECRET;
-  logEnvStatus('NEXTAUTH_SECRET', !!value);
-  
-  if (value) return value;
-  
-  if (process.env.NODE_ENV === 'development') {
-    console.log('🔧 Using development NEXTAUTH fallback');
-    return 'dev-nextauth-secret-change-in-production';
-  }
-  
-  // AWS Lambda specific fallback
-  if (process.env.AWS_REGION) {
-    const fallback = `aws-lambda-nextauth-${process.env.AWS_REGION}-fallback`;
-    console.log('🔧 Using AWS Lambda NEXTAUTH fallback for region:', process.env.AWS_REGION);
-    return fallback;
-  }
-  
-  throw new Error('NEXTAUTH_SECRET environment variable is required in production');
-})();
-
-// YouTube API Key with AWS Lambda fallback
-export const YOUTUBE_API_KEY = (() => {
-  const value = process.env.YOUTUBE_API_KEY;
-  logEnvStatus('YOUTUBE_API_KEY', !!value);
-  
-  if (value) return value;
-  
-  if (process.env.NODE_ENV === 'development') {
-    console.log('🔧 Using development YOUTUBE_API_KEY fallback');
-    return 'dev-youtube-key-change-in-production';
-  }
-  
-  // AWS Lambda specific fallback
-  if (process.env.AWS_REGION) {
-    const fallback = `aws-lambda-youtube-${process.env.AWS_REGION}-fallback`;
-    console.log('🔧 Using AWS Lambda YOUTUBE_API_KEY fallback for region:', process.env.AWS_REGION);
-    return fallback;
-  }
-  
-  // Final fallback to prevent crashes
-  console.warn('⚠️ Using emergency YOUTUBE_API_KEY fallback - YouTube features may not work');
-  return 'emergency-fallback-key';
-})();
-
-/**
- * Safe environment variable getter - never throws, always returns a string
- */
-export function getEnvVar(key: string, fallback: string = ''): string {
-  const value = process.env[key];
-  logEnvStatus(key, !!value);
-  
-  if (value) {
-    return value;
-  }
-  
-  if (fallback) {
-    console.log(`🔧 Using fallback for ${key}`);
-    return fallback;
-  }
-  
-  // Return a safe fallback that won't crash the app
-  console.warn(`⚠️ ${key} not set, using empty string fallback`);
-  return '';
-}
-
-/**
- * Get NODE_ENV safely
- */
-export const NODE_ENV = process.env.NODE_ENV || 'development';
-
-/**
- * NextAuth URL for OAuth callbacks
- */
-export const NEXTAUTH_URL = process.env.NEXTAUTH_URL || 'http://localhost:3000';
+// Export the helper function for other uses
+export { getEnvVar };
