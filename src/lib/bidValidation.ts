@@ -156,13 +156,12 @@ export class BidValidationService {
         minBidAmount,
         bidStep: priceStep,
         adjustedAmount: adjustedAmount
-      };
-
-    } catch (error) {
+      };    } catch (error) {
       console.error('Error validating bid:', error);
+      console.error('Bid data that caused error:', bidData);
       return {
         isValid: false,
-        error: 'Failed to validate bid'
+        error: `Failed to validate bid: ${error instanceof Error ? error.message : String(error)}`
       };
     }
   }
