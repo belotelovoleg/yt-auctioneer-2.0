@@ -9,6 +9,10 @@ frontend:
         # - npx prisma db push --accept-data-loss
     build:
       commands:
+        - echo "Building with environment variables for SSR..."
+        - echo "NODE_ENV=$NODE_ENV"
+        - echo "DATABASE_URL exists:" $(if [ -n "$DATABASE_URL" ]; then echo "YES"; else echo "NO"; fi)
+        - echo "JWT_SECRET exists:" $(if [ -n "$JWT_SECRET" ]; then echo "YES"; else echo "NO"; fi)
         - npm run build
   artifacts:
     baseDirectory: .next
@@ -24,3 +28,8 @@ backend:
     build:
       commands:
         - echo "Backend with secrets configured"
+        - echo "Environment variables for Lambda functions:"
+        - echo "DATABASE_URL exists:" $(if [ -n "$DATABASE_URL" ]; then echo "YES"; else echo "NO"; fi)
+        - echo "JWT_SECRET exists:" $(if [ -n "$JWT_SECRET" ]; then echo "YES"; else echo "NO"; fi)
+        - echo "NEXTAUTH_SECRET exists:" $(if [ -n "$NEXTAUTH_SECRET" ]; then echo "YES"; else echo "NO"; fi)
+        - echo "YOUTUBE_API_KEY exists:" $(if [ -n "$YOUTUBE_API_KEY" ]; then echo "YES"; else echo "NO"; fi)
