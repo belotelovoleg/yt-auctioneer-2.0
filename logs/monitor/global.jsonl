@@ -1,0 +1,736 @@
+{"timestamp":"2025-06-11T09:28:26.519Z","level":"INFO","message":"Test log entry added manually","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:32:51.418Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:32:51.473Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:32:52.049Z","level":"INFO","message":"Found 1 active lots to monitor"}
+{"timestamp":"2025-06-11T09:32:52.369Z","level":"INFO","message":"Started monitoring","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:32:52.370Z","level":"INFO","message":"Background auction monitor initialized successfully (1 jobs started)"}
+{"timestamp":"2025-06-11T09:33:21.495Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:33:33.001Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:34:42.889Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:34:42.935Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:34:43.413Z","level":"INFO","message":"Found 1 active lots to monitor"}
+{"timestamp":"2025-06-11T09:34:43.456Z","level":"INFO","message":"Found 1 active lots to monitor"}
+{"timestamp":"2025-06-11T09:34:43.783Z","level":"INFO","message":"Started monitoring","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:34:43.783Z","level":"INFO","message":"Background auction monitor initialized successfully (1 jobs started)"}
+{"timestamp":"2025-06-11T09:34:45.417Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:34:55.766Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:35:06.127Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:35:16.372Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:35:26.657Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:35:36.902Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:35:47.199Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:35:57.437Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:36:07.798Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:36:18.039Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:36:28.311Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:36:38.563Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:36:48.888Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:36:59.196Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:37:09.494Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:37:19.737Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:37:30.029Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:37:40.333Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:37:50.692Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:38:00.934Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:38:11.233Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:38:21.499Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:38:24.396Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:38:31.857Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:38:42.129Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:38:52.418Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:39:02.677Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:39:12.947Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:39:23.281Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:39:33.559Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:39:44.229Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:39:54.560Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:40:04.889Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:40:15.135Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:40:25.426Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:40:35.681Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:40:45.985Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:40:56.225Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:41:06.496Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:41:16.792Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:41:27.153Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:41:37.399Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:41:47.771Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:41:58.025Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:42:08.292Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:42:18.551Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:42:28.867Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:42:39.162Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:42:49.511Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:42:59.754Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:43:10.106Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:43:20.414Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:43:30.692Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:43:40.972Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:43:51.237Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:44:01.479Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:44:11.763Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:44:22.014Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:44:32.288Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:44:42.560Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:44:53.250Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:45:03.551Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:45:13.842Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:45:24.082Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:45:34.362Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:45:44.606Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:45:45.915Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:45:54.946Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:03.682Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:46:05.233Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:15.594Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:30.535Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:46:30.583Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:46:31.064Z","level":"INFO","message":"Found 1 active lots to monitor"}
+{"timestamp":"2025-06-11T09:46:31.097Z","level":"INFO","message":"Found 1 active lots to monitor"}
+{"timestamp":"2025-06-11T09:46:31.356Z","level":"INFO","message":"Started monitoring","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:31.356Z","level":"INFO","message":"Background auction monitor initialized successfully (1 jobs started)"}
+{"timestamp":"2025-06-11T09:46:32.108Z","level":"INFO","message":"YouTube API response: 75 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:32.109Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:32.109Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:32.110Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:42.497Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:42.497Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:42.498Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:42.499Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:52.925Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:52.926Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:52.927Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:46:52.927Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:03.239Z","level":"INFO","message":"YouTube API response: 9 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:03.239Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:03.240Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:03.240Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:13.523Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:13.523Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:13.524Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:13.525Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:23.744Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:23.745Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:23.745Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:23.746Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:34.765Z","level":"INFO","message":"YouTube API response: 9 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:34.766Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:34.766Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:34.767Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:42.498Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:47:45.073Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:45.074Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:45.074Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:45.075Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:55.407Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:55.407Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:55.408Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:47:55.408Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:05.674Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:05.674Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:05.675Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:05.675Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:15.972Z","level":"INFO","message":"YouTube API response: 10 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:15.973Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:15.974Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:15.974Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:26.209Z","level":"INFO","message":"YouTube API response: 3 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:26.210Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:26.210Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:26.211Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:36.521Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:36.522Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:36.522Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:36.523Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:46.845Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:46.846Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:46.847Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:46.847Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:57.131Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:57.132Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:57.133Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:48:57.133Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:07.425Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:07.426Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:07.427Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:07.427Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:17.723Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:17.732Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:17.733Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:17.734Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:22.284Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:49:28.093Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:28.094Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:28.095Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:28.095Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:38.441Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:38.442Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:38.442Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:38.442Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:48.700Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:48.701Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:48.701Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:48.701Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:58.991Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:58.992Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:58.992Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:49:58.992Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:09.220Z","level":"INFO","message":"YouTube API response: 3 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:09.221Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:09.222Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:09.222Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:19.540Z","level":"INFO","message":"YouTube API response: 10 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:19.540Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:19.541Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:19.541Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:29.836Z","level":"INFO","message":"YouTube API response: 3 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:29.837Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:29.837Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:29.838Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:40.167Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:40.168Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:40.169Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:40.169Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:50.415Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:50.416Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:50.417Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:50:50.417Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:00.717Z","level":"INFO","message":"YouTube API response: 12 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:00.718Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:00.719Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:00.719Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:02.187Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:51:11.046Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:11.046Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:11.047Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:11.048Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:21.314Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:21.315Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:21.316Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:21.316Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:31.936Z","level":"INFO","message":"YouTube API response: 15 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:31.937Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:31.938Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:31.938Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:42.225Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:42.225Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:42.226Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:42.226Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:52.581Z","level":"INFO","message":"YouTube API response: 10 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:52.582Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:52.582Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:51:52.583Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:02.814Z","level":"INFO","message":"YouTube API response: 10 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:02.814Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:02.815Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:02.815Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:13.088Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:13.088Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:13.089Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:13.089Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:23.333Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:23.333Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:23.334Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:23.334Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:33.693Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:33.694Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:33.695Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:33.695Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:43.961Z","level":"INFO","message":"YouTube API response: 8 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:43.961Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:43.962Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:43.962Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:54.248Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:54.248Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:54.249Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:52:54.250Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:04.534Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:04.535Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:04.535Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:04.535Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:11.265Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:53:14.869Z","level":"INFO","message":"YouTube API response: 11 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:14.870Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:14.870Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:14.871Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:25.106Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:25.107Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:25.107Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:25.108Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:35.393Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:35.394Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:35.394Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:35.394Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:45.816Z","level":"INFO","message":"YouTube API response: 9 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:45.817Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:45.817Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:45.817Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:45.988Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:53:56.101Z","level":"INFO","message":"YouTube API response: 8 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:56.102Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:56.102Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:53:56.103Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:06.346Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:06.347Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:06.348Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:06.348Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:09.807Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:54:16.678Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:16.679Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:16.679Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:16.680Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:26.927Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:26.928Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:26.929Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:26.929Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:37.218Z","level":"INFO","message":"YouTube API response: 8 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:37.219Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:37.219Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:37.219Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:47.462Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:47.462Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:47.463Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:47.464Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:57.804Z","level":"INFO","message":"YouTube API response: 9 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:57.805Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:57.805Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:54:57.806Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:08.052Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:08.053Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:08.053Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:08.053Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:18.337Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:18.338Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:18.338Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:18.339Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:28.599Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:28.600Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:28.601Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:28.601Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:38.875Z","level":"INFO","message":"YouTube API response: 9 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:38.875Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:38.876Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:38.877Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:49.124Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:49.125Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:49.125Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:49.126Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:59.392Z","level":"INFO","message":"YouTube API response: 2 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:59.393Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:59.394Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:55:59.394Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:09.682Z","level":"INFO","message":"YouTube API response: 8 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:09.683Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:09.684Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:09.684Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:19.986Z","level":"INFO","message":"YouTube API response: 11 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:19.987Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:19.987Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:19.988Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:30.223Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:30.223Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:30.224Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:30.224Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:40.987Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:40.988Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:40.988Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:40.989Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:51.312Z","level":"INFO","message":"YouTube API response: 8 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:51.313Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:51.313Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:56:51.314Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:01.588Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:01.589Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:01.589Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:01.590Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:11.896Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:11.897Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:11.897Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:11.898Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:22.180Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:22.180Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:22.181Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:22.181Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:32.470Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:32.471Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:32.471Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:32.471Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:42.753Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:42.754Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:42.754Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:42.755Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:53.021Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:53.022Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:53.023Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:57:53.023Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:03.309Z","level":"INFO","message":"YouTube API response: 10 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:03.309Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:03.310Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:03.311Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:13.563Z","level":"INFO","message":"YouTube API response: 3 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:13.563Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:13.564Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:13.564Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:24.015Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:24.016Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:24.017Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:24.017Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:34.257Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:34.257Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:34.258Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:34.259Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:44.558Z","level":"INFO","message":"YouTube API response: 8 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:44.559Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:44.559Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:44.560Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:52.586Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:58:54.844Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:54.845Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:54.845Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:58:54.846Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:01.290Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:59:05.188Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:05.188Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:05.189Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:05.189Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:15.436Z","level":"INFO","message":"YouTube API response: 2 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:15.436Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:15.437Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:15.438Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:18.749Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:59:25.808Z","level":"INFO","message":"YouTube API response: 9 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:25.809Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:25.810Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:25.810Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:33.044Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:59:36.106Z","level":"INFO","message":"YouTube API response: 3 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:36.107Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:36.108Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:36.108Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:42.976Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T09:59:46.447Z","level":"INFO","message":"YouTube API response: 3 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:46.448Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:46.449Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:46.449Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:56.694Z","level":"INFO","message":"YouTube API response: 8 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:56.695Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:56.695Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T09:59:56.696Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:06.983Z","level":"INFO","message":"YouTube API response: 3 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:06.983Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:06.984Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:06.984Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:17.216Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:17.217Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:17.218Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:17.218Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:27.558Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:27.559Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:27.559Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:27.560Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:37.803Z","level":"INFO","message":"YouTube API response: 3 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:37.804Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:37.804Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:37.805Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:48.066Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:48.067Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:48.067Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:48.067Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:58.293Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:58.293Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:58.294Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:00:58.294Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:08.594Z","level":"INFO","message":"YouTube API response: 8 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:08.595Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:08.595Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:08.596Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:18.837Z","level":"INFO","message":"YouTube API response: 3 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:18.838Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:18.839Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:18.839Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:29.128Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:29.129Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:29.129Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:29.130Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:39.396Z","level":"INFO","message":"YouTube API response: 11 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:39.397Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:39.398Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:39.398Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:50.109Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:50.110Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:50.110Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:01:50.111Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:00.389Z","level":"INFO","message":"YouTube API response: 11 messages, 1 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:00.389Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:00.390Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:00.391Z","level":"INFO","message":"Processing 1 bids from YouTube chat","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:01.434Z","level":"WARN","message":"Background processing errors","auctionId":1,"lotId":1,"metadata":["Vanshitaa!! (44): Bid too low. Minimum bid: 2030"]}
+{"timestamp":"2025-06-11T10:02:11.835Z","level":"INFO","message":"YouTube API response: 12 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:11.836Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:11.837Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:11.837Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:22.119Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:22.119Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:22.120Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:22.121Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:32.501Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:32.502Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:32.502Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:32.503Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:42.749Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:42.750Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:42.750Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:42.751Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:53.026Z","level":"INFO","message":"YouTube API response: 8 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:53.027Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:53.028Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:02:53.028Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:03.270Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:03.271Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:03.271Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:03.272Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:13.578Z","level":"INFO","message":"YouTube API response: 10 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:13.578Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:13.579Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:13.579Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:23.882Z","level":"INFO","message":"YouTube API response: 12 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:23.882Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:23.883Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:23.883Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:34.212Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:34.213Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:34.214Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:34.214Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:45.388Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:45.389Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:45.390Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:45.390Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:55.726Z","level":"INFO","message":"YouTube API response: 10 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:55.726Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:55.726Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:03:55.727Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:05.984Z","level":"INFO","message":"YouTube API response: 3 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:05.985Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:05.985Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:05.986Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:16.259Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:16.260Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:16.261Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:16.261Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:26.506Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:26.507Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:26.507Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:26.508Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:36.791Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:36.791Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:36.792Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:36.792Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:47.074Z","level":"INFO","message":"YouTube API response: 7 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:47.075Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:47.075Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:47.076Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:57.369Z","level":"INFO","message":"YouTube API response: 2 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:57.369Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:57.370Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:04:57.371Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:07.617Z","level":"INFO","message":"YouTube API response: 9 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:07.617Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:07.618Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:07.618Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:17.896Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:17.897Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:17.897Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:17.897Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:28.164Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:28.165Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:28.166Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:28.167Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:38.503Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:38.504Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:38.505Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:38.505Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:48.763Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:48.763Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:48.764Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:48.765Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:59.037Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:59.038Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:59.038Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:05:59.038Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:09.280Z","level":"INFO","message":"YouTube API response: 8 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:09.280Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:09.281Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:09.281Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:19.566Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:19.566Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:19.567Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:19.568Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:29.823Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:29.824Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:29.824Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:29.825Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:40.130Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:40.131Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:40.131Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:40.132Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:50.761Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:50.761Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:50.762Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:06:50.762Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:01.039Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:01.040Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:01.041Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:01.041Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:08.286Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T10:07:08.844Z","level":"INFO","message":"Found 1 active lots to monitor"}
+{"timestamp":"2025-06-11T10:07:11.396Z","level":"INFO","message":"YouTube API response: 3 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:11.396Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:11.397Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:11.398Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:21.709Z","level":"INFO","message":"YouTube API response: 9 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:21.710Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:21.711Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:21.711Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:32.038Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:32.038Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:32.039Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:32.040Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:42.355Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:42.355Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:42.356Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:42.356Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:52.647Z","level":"INFO","message":"YouTube API response: 3 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:52.647Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:52.648Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:07:52.648Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:03.735Z","level":"INFO","message":"YouTube API response: 8 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:03.736Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:03.736Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:03.737Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:14.086Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:14.086Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:14.087Z","level":"DEBUG","message":"Updated page token for pagination","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:14.087Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:42.343Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T10:08:43.018Z","level":"INFO","message":"Found 1 active lots to monitor"}
+{"timestamp":"2025-06-11T10:08:43.331Z","level":"INFO","message":"Started monitoring","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:43.332Z","level":"INFO","message":"Background auction monitor initialized successfully (1 jobs started)"}
+{"timestamp":"2025-06-11T10:08:44.489Z","level":"INFO","message":"YouTube API response: 75 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:44.490Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:44.491Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:54.964Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:54.964Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:08:54.965Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:05.292Z","level":"INFO","message":"YouTube API response: 6 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:05.293Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:05.294Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:15.619Z","level":"INFO","message":"YouTube API response: 5 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:15.620Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:15.621Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:25.979Z","level":"INFO","message":"YouTube API response: 9 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:25.980Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:25.981Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:36.222Z","level":"INFO","message":"YouTube API response: 3 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:36.223Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:36.223Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:46.542Z","level":"INFO","message":"YouTube API response: 8 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:46.543Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:46.544Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:51.042Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T10:09:55.416Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T10:09:56.871Z","level":"INFO","message":"YouTube API response: 4 messages, 0 bids","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:56.872Z","level":"DEBUG","message":"YouTube API recommended polling interval: 10000ms","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:09:56.873Z","level":"DEBUG","message":"No bids found in this polling cycle","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:10:07.230Z","level":"INFO","message":"Database record marked inactive","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:10:07.265Z","level":"INFO","message":"Cleared YouTube cache for video jfKfPfyJRdk","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:10:07.266Z","level":"INFO","message":"Stopped monitoring (deleted: true, remaining jobs: 0)","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:10:07.267Z","level":"INFO","message":"Deleted log file: C:\\WWW\\_Oleg\\auctioneer-2\\logs\\monitor\\job-1-1.jsonl","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:10:07.268Z","level":"INFO","message":"Cleaned up logs for monitoring job","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:10:07.501Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T10:10:07.940Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T10:10:07.940Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:05.792Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:50:06.727Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:50:06.728Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:42.963Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:50:42.996Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:50:43.009Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:50:43.021Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:50:43.025Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:50:43.028Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:50:43.031Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:50:43.031Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:50:43.034Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:50:43.035Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:50:43.041Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:50:43.041Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:50:43.401Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:50:43.402Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:43.412Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:50:43.413Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:43.415Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:50:43.415Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:43.422Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:50:43.423Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:43.430Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:50:43.430Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:50:43.431Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:43.430Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:43.433Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:50:43.434Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:50:43.434Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:43.434Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:43.434Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:50:43.435Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:43.437Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:50:43.437Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:43.438Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:50:43.439Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:50:43.439Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:43.439Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:50:44.944Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:51:16.697Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:51:17.159Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:51:17.160Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:52:04.168Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:52:04.193Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:52:04.201Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:52:04.203Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:52:04.210Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:52:04.203Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:52:04.219Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:52:04.226Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:52:04.243Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:52:04.248Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:52:04.259Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:52:04.270Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:52:04.555Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:52:04.556Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:52:04.569Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:52:04.569Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:52:04.570Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:52:04.570Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:52:04.571Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:52:04.572Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:52:04.587Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:52:04.586Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:52:04.587Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:52:04.587Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:52:04.602Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:52:04.603Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:52:04.603Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:52:04.602Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:52:04.610Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:52:04.611Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:52:04.612Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:52:04.612Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:52:04.615Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:52:04.615Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:52:04.626Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:52:04.627Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:52:06.107Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:52:06.470Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:52:06.471Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}
+{"timestamp":"2025-06-11T15:53:00.715Z","level":"INFO","message":"Initializing background auction monitor..."}
+{"timestamp":"2025-06-11T15:53:01.157Z","level":"INFO","message":"Found 0 active lots to monitor"}
+{"timestamp":"2025-06-11T15:53:01.158Z","level":"INFO","message":"Background auction monitor initialized successfully (0 jobs started)"}

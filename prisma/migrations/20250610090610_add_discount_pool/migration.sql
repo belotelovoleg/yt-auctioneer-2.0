@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "auctions" ADD COLUMN     "discountPool" DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+ADD COLUMN     "discountUsed" DECIMAL(10,2) NOT NULL DEFAULT 0.00;

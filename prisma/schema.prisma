@@ -1,0 +1,175 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               Int       @id @default(autoincrement())
+  login            String    @unique
+  password         String
+  isActive         Boolean   @default(true)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  youtubeChannelId String?
+  isAdmin          Boolean   @default(false)
+  auctions         Auction[]
+  bids             Bid[]
+  lots             Lot[]
+
+  @@map("users")
+}
+
+model Auction {
+  id               Int           @id @default(autoincrement())
+  userId           Int
+  name             String
+  description      String?
+  date             DateTime?
+  youtubeChannelId String?
+  status           AuctionStatus @default(SCHEDULED)
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  youtubeVideoId   String?
+  discountPool     Decimal       @default(0.00) @db.Decimal(10, 2)
+  discountUsed     Decimal       @default(0.00) @db.Decimal(10, 2)
+  useTimer         Boolean       @default(true)
+  auctionLots      AuctionLot[]
+  user             User          @relation(fields: [userId], references: [id])
+  bids             Bid[]
+
+  @@map("auctions")
+}
+
+model Lot {
+  id               Int          @id @default(autoincrement())
+  userId           Int
+  name             String
+  description      String?
+  photo            String?
+  startingPrice    Decimal      @default(100.00) @db.Decimal(10, 2)
+  priceStep        Decimal      @default(10.00) @db.Decimal(10, 2)
+  timer            Int          @default(120)
+  discount         Decimal      @default(0.00) @db.Decimal(10, 2)
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+  sellingStartedAt DateTime?
+  finalPrice       Decimal?     @db.Decimal(10, 2)
+  status           LotStatus    @default(READY)
+  useTimer         Boolean      @default(true)
+  auctionLots      AuctionLot[]
+  bids             Bid[]
+  user             User         @relation(fields: [userId], references: [id])
+
+  @@map("lots")
+}
+
+model AuctionLot {
+  id        Int      @id @default(autoincrement())
+  auctionId Int
+  lotId     Int
+  createdAt DateTime @default(now())
+  order     Int      @default(0)
+  auction   Auction  @relation(fields: [auctionId], references: [id], onDelete: Cascade)
+  lot       Lot      @relation(fields: [lotId], references: [id], onDelete: Cascade)
+
+  @@unique([auctionId, lotId])
+  @@map("auction_lots")
+}
+
+model Bid {
+  id          Int       @id @default(autoincrement())
+  auctionId   Int
+  lotId       Int
+  userId      Int?
+  bidderName  String
+  bidderEmail String?
+  amount      Decimal   @db.Decimal(10, 2)
+  source      BidSource @default(MANUAL)
+  status      BidStatus @default(PENDING)
+  isWinning   Boolean   @default(false)
+  messageId   String?
+  metadata    Json?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  auction     Auction   @relation(fields: [auctionId], references: [id], onDelete: Cascade)
+  lot         Lot       @relation(fields: [lotId], references: [id], onDelete: Cascade)
+  user        User?     @relation(fields: [userId], references: [id])
+
+  @@index([auctionId, lotId, createdAt])
+  @@index([auctionId, lotId, amount])
+  @@index([messageId])
+  @@map("bids")
+}
+
+model MonitoringJob {
+  id                     Int      @id @default(autoincrement())
+  auctionId              Int
+  lotId                  Int
+  isActive               Boolean  @default(true)
+  lastProcessedTime      DateTime @default(now())
+  currentPollingInterval Int      @default(10000)
+  nextPageToken          String?
+  auctionNotFoundCount   Int      @default(0)
+  lotNotFoundCount       Int      @default(0)
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+
+  @@unique([auctionId, lotId])
+  @@index([isActive])
+  @@map("monitoring_jobs")
+}
+
+model MonitoringLog {
+  id        Int      @id @default(autoincrement())
+  auctionId Int?
+  lotId     Int?
+  level     LogLevel
+  message   String
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  @@index([auctionId, lotId, createdAt])
+  @@index([level, createdAt])
+  @@map("monitoring_logs")
+}
+
+enum LogLevel {
+  INFO
+  WARN
+  ERROR
+  DEBUG
+}
+
+enum AuctionStatus {
+  SCHEDULED
+  READY
+  STARTED
+  FINISHED
+}
+
+enum LotStatus {
+  READY
+  BEING_SOLD
+  SOLD
+  WITHDRAWN
+}
+
+enum BidSource {
+  MANUAL
+  YOUTUBE
+  PHONE
+  ONLINE
+}
+
+enum BidStatus {
+  PENDING
+  ACCEPTED
+  OUTBID
+  REJECTED
+}

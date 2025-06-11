@@ -1,0 +1,2 @@
+{"timestamp":"2025-06-11T10:10:07.267Z","level":"INFO","message":"Deleted log file: C:\\WWW\\_Oleg\\auctioneer-2\\logs\\monitor\\job-1-1.jsonl","auctionId":1,"lotId":1}
+{"timestamp":"2025-06-11T10:10:07.268Z","level":"INFO","message":"Cleaned up logs for monitoring job","auctionId":1,"lotId":1}
