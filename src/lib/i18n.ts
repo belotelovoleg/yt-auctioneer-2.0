@@ -11,10 +11,23 @@ export const translations = {
     auth_errorLoginFailed: "Login failed",
     auth_errorRegistrationFailed: "Registration failed",
     auth_welcome: "Welcome, {login}!",
-    auth_logout: "Logout",
-    
-    // App
+    auth_logout: "Logout",    // App
     app_name: "YT Auctioneer",
+    app_description: "YouTube Auction Management System",
+    
+    // Homepage
+    home_welcome: "Ready to manage your YouTube auctions with style! 🚀",
+    home_subtitle: "Professional auction management platform for YouTube creators",
+    home_version: "Version",
+    
+    // Page Titles
+    page_title_home: "Home",
+    page_title_auctions: "Auctions",
+    page_title_login: "Login",
+    page_title_register: "Register",
+    page_title_profile: "Profile",
+    page_title_settings: "Settings",
+    page_title_lots: "Lots",
     
     // Navigation
     nav_home: "Home",
@@ -264,10 +277,23 @@ export const translations = {
     auth_errorLoginFailed: "Помилка входу",
     auth_errorRegistrationFailed: "Помилка реєстрації",
     auth_welcome: "Вітаємо, {login}!",
-    auth_logout: "Вийти",
-    
-    // App
+    auth_logout: "Вийти",    // App
     app_name: "ЮТ-Аукціонер",
+    app_description: "Система управління YouTube аукціонами",
+    
+    // Homepage
+    home_welcome: "Готові керувати YouTube аукціонами зі стилем! 🚀",
+    home_subtitle: "Професійна платформа управління аукціонами для YouTube-творців",
+    home_version: "Версія",
+    
+    // Page Titles
+    page_title_home: "Головна",
+    page_title_auctions: "Аукціони",
+    page_title_login: "Вхід",
+    page_title_register: "Реєстрація",
+    page_title_profile: "Профіль",
+    page_title_settings: "Налаштування",
+    page_title_lots: "Лоти",
     
     // Navigation
     nav_home: "Головна",

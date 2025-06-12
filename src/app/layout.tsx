@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Providers } from './providers';
 import AppLayout from '@/components/AppLayout';
 import ServerInit from '@/components/ServerInit';
+import { getDefaultMetadata, getDefaultViewport } from '@/lib/metadata';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,10 +16,9 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Auctioneer App",
-  description: "Your auction platform",
-};
+export const metadata: Metadata = getDefaultMetadata('en');
+
+export const viewport: Viewport = getDefaultViewport();
 
 export default function RootLayout({
   children,
