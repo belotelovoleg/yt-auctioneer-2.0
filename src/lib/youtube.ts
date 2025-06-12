@@ -1,5 +1,4 @@
 // YouTube Data API v3 service
-import { YOUTUBE_API_KEY } from './config-env';
 
 interface LiveStreamDetails {
   activeLiveChatId?: string;
@@ -37,7 +36,7 @@ interface ChatResponse {
 }
 
 export class YouTubeService {
-  private static readonly API_KEY = YOUTUBE_API_KEY;
+  private static readonly API_KEY = process.env.YOUTUBE_API_KEY;
   private static readonly BASE_URL = 'https://www.googleapis.com/youtube/v3';
   private static readonly MIN_POLLING_INTERVAL = 10000; // 10 seconds minimum
   

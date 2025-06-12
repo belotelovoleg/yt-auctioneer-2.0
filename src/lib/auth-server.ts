@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { NextRequest } from 'next/server';
 import { prisma } from './db';
-import { JWT_SECRET } from './config-env';
 
 interface User {
   id: number;
@@ -17,7 +16,7 @@ export async function validateToken(request: NextRequest): Promise<User | null> 
     if (!token) {
       return null;
     }    // Verify JWT token
-    const decoded = jwt.verify(token, JWT_SECRET) as any;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as any;
     
     if (!decoded.userId) {
       return null;

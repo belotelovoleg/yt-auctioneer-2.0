@@ -12,17 +12,15 @@ frontend:
         - echo "Building with environment variables for SSR..."
         - echo "NODE_ENV=$NODE_ENV"
         - echo "DATABASE_URL exists:" $(if [ -n "$DATABASE_URL" ]; then echo "YES"; else echo "NO"; fi)
+        - echo "VERCEL_URL exists:" $(if [ -n "$VERCEL_URL" ]; then echo "YES"; else echo "NO"; fi)
         - echo "JWT_SECRET exists:" $(if [ -n "$JWT_SECRET" ]; then echo "YES"; else echo "NO"; fi)
-        - echo "NEXTAUTH_SECRET exists:" $(if [ -n "$NEXTAUTH_SECRET" ]; then echo "YES"; else echo "NO"; fi)
         - echo "YOUTUBE_API_KEY exists:" $(if [ -n "$YOUTUBE_API_KEY" ]; then echo "YES"; else echo "NO"; fi)
-        - echo "NEXTAUTH_URL exists:" $(if [ -n "$NEXTAUTH_URL" ]; then echo "YES"; else echo "NO"; fi)
         # Create .env.production file with build-time environment variables
         - echo "📝 Creating .env.production file with environment variables..."
         - echo "DATABASE_URL=$DATABASE_URL" > .env.production
         - echo "JWT_SECRET=$JWT_SECRET" >> .env.production
-        - echo "NEXTAUTH_SECRET=$NEXTAUTH_SECRET" >> .env.production
         - echo "YOUTUBE_API_KEY=$YOUTUBE_API_KEY" >> .env.production
-        - echo "NEXTAUTH_URL=$NEXTAUTH_URL" >> .env.production
+        - echo "VERCEL_URL=$VERCEL_URL" >> .env.production
         - echo "NODE_ENV=production" >> .env.production
         - echo "✅ Created .env.production with $(wc -l < .env.production) variables"
         - cat .env.production
@@ -44,9 +42,8 @@ backend:
         - echo "Environment variables for Lambda functions:"
         - echo "DATABASE_URL exists:" $(if [ -n "$DATABASE_URL" ]; then echo "YES"; else echo "NO"; fi)
         - echo "JWT_SECRET exists:" $(if [ -n "$JWT_SECRET" ]; then echo "YES"; else echo "NO"; fi)
-        - echo "NEXTAUTH_SECRET exists:" $(if [ -n "$NEXTAUTH_SECRET" ]; then echo "YES"; else echo "NO"; fi)
-        - echo "NEXTAUTH_URL exists:" $(if [ -n "$NEXTAUTH_URL" ]; then echo "YES"; else echo "NO"; fi)
         - echo "YOUTUBE_API_KEY exists:" $(if [ -n "$YOUTUBE_API_KEY" ]; then echo "YES"; else echo "NO"; fi)
+        - echo "VERCEL_URL exists:" $(if [ -n "$VERCEL_URL" ]; then echo "YES"; else echo "NO"; fi)
         # Force environment variables to be available in Lambda
         - echo "Configuring Lambda environment variables..."
         - export AWS_LAMBDA_ENVIRONMENT_VARIABLES=true

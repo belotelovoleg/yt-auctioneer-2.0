@@ -72,6 +72,7 @@ interface Lot {
   discount: number;
   useTimer: boolean;
   calculatedPrice: number;
+  status?: string;
 }
 
 interface AuctionLot {
@@ -299,13 +300,15 @@ export default function AuctionLotsPage() {
       });
     }
   };
-
   const fetchAvailableLots = async () => {
     try {
+      // Filter out SOLD lots by adding status filter - we want READY and BEING_SOLD lots
       const response = await fetch("/api/lots");
       if (response.ok) {
         const data = await response.json();
-        setAvailableLots(data);
+        // Filter out sold lots on the client side to exclude SOLD status
+        const availableLots = data.filter((lot: Lot) => lot.status !== 'SOLD');
+        setAvailableLots(availableLots);
       }
     } catch (error) {
       console.error("Failed to fetch lots:", error);

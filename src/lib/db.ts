@@ -1,8 +1,7 @@
 import { PrismaClient } from '../generated/prisma'
-import { DATABASE_URL } from './config-env'
 
 // Configure DATABASE_URL with fallback
-const databaseUrl = DATABASE_URL
+const databaseUrl = process.env.DATABASE_URL
 
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined

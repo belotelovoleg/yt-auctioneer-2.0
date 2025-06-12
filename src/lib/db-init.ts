@@ -1,4 +1,3 @@
-import { DATABASE_URL } from './config-env';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 
@@ -10,7 +9,7 @@ const execAsync = promisify(exec);
  */
 export async function initializeDatabase(): Promise<boolean> {
   const nodeEnv = process.env.NODE_ENV;
-  const databaseUrl = DATABASE_URL;
+  const databaseUrl = process.env.DATABASE_URL;
   
   console.log('🔄 Initializing database schema...');
   

@@ -2,17 +2,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 import bcrypt from 'bcryptjs';
 import { SignJWT } from 'jose';
-import { JWT_SECRET, DATABASE_URL, NODE_ENV } from '@/lib/config-env';
 
-const jwtSecret = new TextEncoder().encode(JWT_SECRET);
+const jwtSecret = new TextEncoder().encode(process.env.JWT_SECRET!);
 
 export async function POST(request: NextRequest) {
   try {
-    console.log('🔍 Login attempt started');    console.log('🔍 Environment check:', {
-      NODE_ENV: NODE_ENV,
-      DATABASE_URL: DATABASE_URL ? 'SET' : 'NOT SET',
-      JWT_SECRET: JWT_SECRET ? 'SET' : 'NOT SET'
-    });
+    console.log('🔍 Login attempt started');  
 
     const { login, password } = await request.json();
     console.log('🔍 Request body parsed, login:', login);
@@ -75,10 +70,9 @@ export async function POST(request: NextRequest) {
       },
       token
     });
-    
-    response.cookies.set('auth-token', token, {
+      response.cookies.set('auth-token', token, {
       httpOnly: true,
-      secure: NODE_ENV === 'production',
+      secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
       maxAge: 60 * 60 * 24, // 24 hours
     });

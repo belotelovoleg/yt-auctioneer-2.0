@@ -3,7 +3,8 @@ import { prisma } from '@/lib/db';
 import { jwtVerify } from 'jose';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-import { JWT_SECRET } from '@/lib/config-env';
+
+const JWT_SECRET_ENCODED = new TextEncoder().encode(process.env.JWT_SECRET!);
 
 // Extend jsPDF type to include autoTable
 declare module 'jspdf' {
@@ -11,8 +12,6 @@ declare module 'jspdf' {
     autoTable: (options: any) => jsPDF;
   }
 }
-
-const JWT_SECRET_ENCODED = new TextEncoder().encode(JWT_SECRET);
 
 async function getUserFromToken(request: NextRequest) {
   try {

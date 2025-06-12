@@ -1,9 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 import { jwtVerify } from 'jose';
-import { JWT_SECRET } from '@/lib/config-env';
 
-const JWT_SECRET_ENCODED = new TextEncoder().encode(JWT_SECRET);
+const JWT_SECRET_ENCODED = new TextEncoder().encode(process.env.JWT_SECRET!);
 
 async function getUserFromToken(request: NextRequest) {
   try {
