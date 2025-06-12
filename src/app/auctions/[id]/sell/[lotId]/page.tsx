@@ -139,10 +139,16 @@ export default function LiveSellingPage() {
   useEffect(() => {
     let isCancelled = false; // Keep cancellation flag
 
-    const loadAuctionData = async () => {
-      try {
+    const loadAuctionData = async () => {      try {
         setLoadingAuction(true);
-        const response = await fetch(`/api/auctions/${auctionId}`);
+        const response = await fetch(`/api/auctions/${auctionId}`, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+          }
+        });
 
         // Check if component was unmounted before API call completed
         if (isCancelled) {
@@ -184,9 +190,15 @@ export default function LiveSellingPage() {
             // Add a small delay to avoid race conditions with other initialization
             setTimeout(async () => {
               if (isCancelled) return;
-              
-              // First check if monitoring is already active before starting it
-              const statusResponse = await fetch('/api/background-monitor/status');
+                // First check if monitoring is already active before starting it
+              const statusResponse = await fetch('/api/background-monitor/status', {
+                cache: 'no-store',
+                headers: {
+                  'Cache-Control': 'no-cache, no-store, must-revalidate',
+                  'Pragma': 'no-cache',
+                  'Expires': '0'
+                }
+              });
               const statusData = await statusResponse.json();
               
               const alreadyMonitoring = statusData.jobs?.some(
@@ -194,11 +206,13 @@ export default function LiveSellingPage() {
               );
               
               if (!alreadyMonitoring) {
-                console.log('🔄 No active monitor found, ensuring monitoring is started');
-                const response = await fetch('/api/background-monitor', {
+                console.log('🔄 No active monitor found, ensuring monitoring is started');                const response = await fetch('/api/background-monitor', {
                   method: 'POST',
                   headers: {
                     'Content-Type': 'application/json',
+                    'Cache-Control': 'no-cache, no-store, must-revalidate',
+                    'Pragma': 'no-cache',
+                    'Expires': '0'
                   },
                   body: JSON.stringify({
                     action: 'start',
@@ -254,11 +268,17 @@ export default function LiveSellingPage() {
     };
   }, [auctionId, lotId]);
   // Fetch database bids for the current lot
-  const fetchDatabaseBids = async () => {
-    if (!auctionId || !lotId) return;
+  const fetchDatabaseBids = async () => {    if (!auctionId || !lotId) return;
 
     try {
-      const response = await fetch(`/api/bids?auctionId=${auctionId}&lotId=${lotId}`);
+      const response = await fetch(`/api/bids?auctionId=${auctionId}&lotId=${lotId}`, {
+        cache: 'no-store',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        }
+      });
 
       if (!response.ok) {
         throw new Error('Failed to fetch bids');
@@ -292,11 +312,13 @@ export default function LiveSellingPage() {
   const createManualBid = async (bidderName: string, amount: number) => {
     if (!auctionId || !lotId) return;
 
-    try {
-      const response = await fetch('/api/bids/manual', {
+    try {      const response = await fetch('/api/bids/manual', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
         },
         body: JSON.stringify({
           auctionId: parseInt(auctionId),
@@ -335,9 +357,13 @@ export default function LiveSellingPage() {
   const confirmDeleteBid = async () => {
     if (!bidToDelete) return;
 
-    try {
-      const response = await fetch(`/api/bids/${bidToDelete.id}`, {
+    try {      const response = await fetch(`/api/bids/${bidToDelete.id}`, {
         method: 'DELETE',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        }
       });
 
       if (response.ok) {
@@ -355,11 +381,13 @@ export default function LiveSellingPage() {
   };
   // Update lot status
   const updateLotStatus = async (status: 'READY' | 'BEING_SOLD' | 'SOLD' | 'WITHDRAWN') => {
-    try {
-      const response = await fetch(`/api/lots/${lotId}/status`, {
+    try {      const response = await fetch(`/api/lots/${lotId}/status`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
         },
         body: JSON.stringify({ status }),
       });
@@ -526,14 +554,18 @@ export default function LiveSellingPage() {
 
     if (!lot) return;
 
-    try {
-      const response = await fetch(`/api/lots/${lotId}`, {
+    try {      const response = await fetch(`/api/lots/${lotId}`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        },
         body: JSON.stringify({
           startingPrice: newStartingPrice
         }),
-      }); if (response.ok) {
+      });if (response.ok) {
         // Get the updated lot data
         const updatedLot = await response.json();
         // Update lot state
@@ -561,15 +593,19 @@ export default function LiveSellingPage() {
 
     if (!lot) return;
 
-    try {
-      // We're setting the discount directly to the new value, not incrementing it
+    try {      // We're setting the discount directly to the new value, not incrementing it
       const response = await fetch(`/api/lots/${lotId}`, {
         method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        },
         body: JSON.stringify({
           discount: discount
         }),
-      }); if (response.ok) {        // Refresh lot data
+      });if (response.ok) {        // Refresh lot data
         const updatedLot = await response.json();
         setLot(updatedLot);
 
@@ -600,12 +636,14 @@ export default function LiveSellingPage() {
       pollingRef.current = null;
     }
 
-    try {
-      // Update lot status and final price using PATCH endpoint
+    try {      // Update lot status and final price using PATCH endpoint
       const response = await fetch(`/api/lots/${lotId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
         },
         body: JSON.stringify({
           status: 'SOLD',
@@ -644,11 +682,13 @@ export default function LiveSellingPage() {
     setUseTimer(newTimerState);
 
     // Update lot's timer setting
-    try {
-      const response = await fetch(`/api/lots/${lotId}`, {
+    try {      const response = await fetch(`/api/lots/${lotId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
         },
         body: JSON.stringify({ useTimer: newTimerState }),
       });
@@ -672,12 +712,13 @@ export default function LiveSellingPage() {
       // Calculate a test bid amount (current price + price step)
       const currentHighestBid = databaseBids[0];
       const currentPrice = currentHighestBid ? Number(currentHighestBid.amount) : Number(lot.calculatedPrice);
-      const testBidAmount = currentPrice + Number(lot.priceStep);
-
-      const response = await fetch('/api/test/simulate-bid', {
+      const testBidAmount = currentPrice + Number(lot.priceStep);      const response = await fetch('/api/test/simulate-bid', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
         },
         body: JSON.stringify({
           auctionId: parseInt(auctionId),
