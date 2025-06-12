@@ -465,7 +465,7 @@ export class BackgroundAuctionMonitor {
           lotId,
           isActive: true,
           lastProcessedTime: new Date(),
-          currentPollingInterval: 10000,
+          currentPollingInterval: 5000,
           auctionNotFoundCount: 0,
           lotNotFoundCount: 0
         }
@@ -477,7 +477,7 @@ export class BackgroundAuctionMonitor {
           interval: null as any,
           lastProcessedTime: new Date(),
           nextPageToken: undefined,
-          currentPollingInterval: 10000, // Start with 10 seconds, will be updated by YouTube API
+          currentPollingInterval: 5000, // Start with 5 seconds, will be updated by YouTube API
           auctionNotFoundCount: 0,
           lotNotFoundCount: 0
         });
@@ -702,8 +702,8 @@ export class BackgroundAuctionMonitor {
 
       // Update polling interval if YouTube provides a recommendation
       if (data.pollingInterval && data.pollingInterval !== job.currentPollingInterval) {
-        const newInterval = Math.max(data.pollingInterval, 10000); // Minimum 10 seconds, respect YouTube's recommendations
-        
+        const newInterval = Math.max(data.pollingInterval, 5000); // Minimum 5 seconds, respect YouTube's recommendations
+
         if (newInterval !== job.currentPollingInterval) {
           this.addLog('INFO', `Updated polling interval: ${job.currentPollingInterval}ms → ${newInterval}ms`, auctionId, lotId);
           job.currentPollingInterval = newInterval;
