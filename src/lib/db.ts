@@ -13,7 +13,7 @@ export const prisma = globalForPrisma.prisma ?? new PrismaClient({
       url: databaseUrl
     }
   },
-  log: process.env.AWS_LAMBDA_FUNCTION_NAME ? ['error'] : ['query', 'info', 'warn', 'error']
+  log: process.env.AWS_LAMBDA_FUNCTION_NAME ? ['error'] : ['info', 'warn', 'error'] // Temporarily removed 'query' to reduce log noise
 })
 
 // In AWS Lambda, don't store the client globally to avoid connection pool issues

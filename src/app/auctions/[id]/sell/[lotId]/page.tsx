@@ -174,12 +174,52 @@ export default function LiveSellingPage() {
         setTimer(auctionLot.lot.timer);
 
         // Set timer usage based on lot's individual setting (not auction setting)
-        setUseTimer(auctionLot.lot.useTimer || false);
-
-        // Restore isActive state based on lot status from database
+        setUseTimer(auctionLot.lot.useTimer || false);        // Restore isActive state based on lot status from database
         if (auctionLot.lot.status === 'BEING_SOLD') {
           console.log('🔄 Restored active selling state from database - lot status: BEING_SOLD');
           setIsActive(true);
+          
+          // Ensure background monitoring is active when page is refreshed
+          try {
+            // Add a small delay to avoid race conditions with other initialization
+            setTimeout(async () => {
+              if (isCancelled) return;
+              
+              // First check if monitoring is already active before starting it
+              const statusResponse = await fetch('/api/background-monitor/status');
+              const statusData = await statusResponse.json();
+              
+              const alreadyMonitoring = statusData.jobs?.some(
+                (job: any) => job.auctionId === parseInt(auctionId) && job.lotId === parseInt(lotId)
+              );
+              
+              if (!alreadyMonitoring) {
+                console.log('🔄 No active monitor found, ensuring monitoring is started');
+                const response = await fetch('/api/background-monitor', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    action: 'start',
+                    auctionId: parseInt(auctionId),
+                    lotId: parseInt(lotId)
+                  }),
+                });
+  
+                if (response.ok) {
+                  console.log('✅ Successfully started monitoring on page refresh');
+                } else {
+                  console.error('❌ Failed to start monitoring');
+                }
+              } else {
+                console.log('✓ Monitoring already active, no need to restart');
+              }
+            }, 500);
+          } catch (error) {
+            console.error('Error ensuring monitoring is active:', error);
+          }
+          
           // Immediately start polling when restoring state
           setTimeout(() => {
             if (!isCancelled) {

@@ -402,12 +402,27 @@ export class BackgroundAuctionMonitor {
     }
   }/**
    * Start monitoring a specific auction/lot
-   */  
-  static async startMonitoring(auctionId: number, lotId: number): Promise<boolean> {
-    const key = `${auctionId}-${lotId}`;    // Check if already monitoring this lot
+   */  static async startMonitoring(auctionId: number, lotId: number): Promise<boolean> {
+    const key = `${auctionId}-${lotId}`;    
+    
+    // Check if already monitoring this lot
     if (this.monitoringJobs.has(key)) {
-      this.addLog('INFO', `Already monitoring - skipping duplicate`, auctionId, lotId);
-      return true;
+      const existingJob = this.monitoringJobs.get(key);
+      
+      // Check if existing job already has an active interval
+      if (existingJob && existingJob.interval) {
+        this.addLog('INFO', `Already monitoring with active interval - skipping duplicate`, auctionId, lotId);
+        console.log(`✅ Already monitoring lot ${lotId} with active interval - preventing duplicate polling cycle`);
+        return true;
+      } else if (existingJob) {
+        // If job exists but has no interval, log it but continue to recreate the interval
+        this.addLog('WARN', `Found inactive monitor job - reactivating`, auctionId, lotId);
+        console.log(`⚠️ Found inactive monitor for lot ${lotId} - reactivating polling cycle`);
+        // Don't return, allow process to continue and set up the interval
+      } else {
+        this.addLog('INFO', `Already monitoring - skipping duplicate`, auctionId, lotId);
+        return true;
+      }
     }
 
     try {
@@ -454,19 +469,19 @@ export class BackgroundAuctionMonitor {
           auctionNotFoundCount: 0,
           lotNotFoundCount: 0
         }
-      });
-
-      // Create a placeholder job immediately to prevent race conditions
-      this.monitoringJobs.set(key, {
-        auctionId,
-        lotId,
-        interval: null as any,
-        lastProcessedTime: new Date(),
-        nextPageToken: undefined,
-        currentPollingInterval: 10000, // Start with 10 seconds, will be updated by YouTube API
-        auctionNotFoundCount: 0,
-        lotNotFoundCount: 0
-      });
+      });      // Create a placeholder job immediately to prevent race conditions
+      if (!this.monitoringJobs.has(key)) {
+        this.monitoringJobs.set(key, {
+          auctionId,
+          lotId,
+          interval: null as any,
+          lastProcessedTime: new Date(),
+          nextPageToken: undefined,
+          currentPollingInterval: 10000, // Start with 10 seconds, will be updated by YouTube API
+          auctionNotFoundCount: 0,
+          lotNotFoundCount: 0
+        });
+      }
 
       // Create recursive processing function with dynamic delays
       const recursiveProcessing = async () => {
@@ -477,13 +492,37 @@ export class BackgroundAuctionMonitor {
         if (job) {
           job.interval = setTimeout(recursiveProcessing, job.currentPollingInterval);
         }
-      };
-
-      // Update the existing job with the interval (placeholder job was already created)
+      };      // Update the existing job with the interval (placeholder job was already created)
       const job = this.monitoringJobs.get(key);
       if (job) {
+        // Clear any existing interval to prevent duplicate polling cycles
+        if (job.interval) {
+          clearTimeout(job.interval);
+          console.log(`🔄 Cleared existing interval for lot ${lotId} to prevent duplicate polling`);
+          this.addLog('INFO', `Cleared existing interval before starting new one`, auctionId, lotId);
+        }
+
         console.log(`🔄 Started background monitoring for ${key} with dynamic delays`);
         console.log(`🚀 Starting first processing cycle`);
+        
+        // Extra safeguard: check if this lot has any other active monitors from different auctions
+        // This is a rare case but can happen if a lot is included in multiple auctions
+        const allKeys = Array.from(this.monitoringJobs.keys());
+        for (const otherKey of allKeys) {
+          if (otherKey !== key && otherKey.endsWith(`-${lotId}`)) {
+            const [otherAuctionId, otherLotId] = otherKey.split('-').map(Number);
+            if (otherLotId === lotId) {
+              // Found another monitor for the same lot but different auction
+              const otherJob = this.monitoringJobs.get(otherKey);
+              if (otherJob && otherJob.interval) {
+                clearTimeout(otherJob.interval);
+                console.log(`⚠️ Found another monitor for lot ${lotId} in auction ${otherAuctionId} - stopping it`);
+                this.addLog('WARN', `Found duplicate lot monitor in another auction - stopping it`, otherAuctionId, lotId);
+                this.monitoringJobs.delete(otherKey);
+              }
+            }
+          }
+        }
         
         // Start the recursive processing loop
         recursiveProcessing();
@@ -810,14 +849,37 @@ export class BackgroundAuctionMonitor {
     
     console.log(`🧹 Emergency cleanup completed - cleared all timers up to ID ${timerIdNum}`);
   }
-
   /**
    * Handle lot status changes
-   */
-  static async handleLotStatusChange(lotId: number, newStatus: string, auctionId?: number) {
+   */  static async handleLotStatusChange(lotId: number, newStatus: string, auctionId?: number) {
     console.log(`📋 Lot ${lotId} status changed to: ${newStatus}`);
 
     if (newStatus === 'BEING_SOLD') {
+      // First, ensure we stop any existing monitors for this lot regardless of auction
+      const auctionLots = await prisma.auctionLot.findMany({
+        where: { lotId },
+        select: { auctionId: true }
+      });
+      
+      for (const auctionLot of auctionLots) {
+        // Stop any existing monitor before starting a new one
+        await this.stopMonitoring(auctionLot.auctionId, lotId);
+      }
+
+      // Check if there's already an active monitoring job in the database
+      const existingJob = await prisma.monitoringJob.findFirst({
+        where: { 
+          lotId,
+          isActive: true
+        }
+      });
+      
+      if (existingJob) {
+        console.log(`⚠️ Already have active database record for lot ${lotId} - stopping old job first`);
+        // Force cleanup of any existing job
+        await this.stopMonitoring(existingJob.auctionId, lotId);
+      }
+
       // Start monitoring if we have auctionId
       if (auctionId) {
         await this.startMonitoring(auctionId, lotId);
