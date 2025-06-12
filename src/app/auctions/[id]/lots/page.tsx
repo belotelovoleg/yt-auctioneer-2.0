@@ -142,12 +142,11 @@ function SortableItem({
           sx={{ mr: 2, width: 40, height: 40 }}
         />
       )}
-      
-      <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1 }}>
         <ListItemText
           primary={auctionLot.lot.name}
           secondary={auctionLot.lot.description}
-        />        <Box sx={{ display: "flex", gap: 1, mt: 0.5 }}>
+        />        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 0.5 }}>
           <Tooltip title={t("lot_startingPrice", lang)}>
             <Chip
               icon={<PriceIcon sx={{ fontSize: '1rem !important' }} />}
@@ -474,24 +473,13 @@ export default function AuctionLotsPage() {
       )}      {/* Header */}
       <Box display="flex" alignItems="center" justifyContent="space-between" mb={3}>
         <Box display="flex" alignItems="center">
-          <IconButton onClick={() => router.back()} sx={{ mr: 1 }}>
+          <IconButton onClick={() => router.push('/auctions')} sx={{ mr: 1 }}>
             <ArrowBackIcon />
           </IconButton>
           <Typography variant="h4" component="h1">
             {t("auctionLots_manageLots", lang)}
           </Typography>
-          {auction && (
-            <Typography variant="h6" color="text.secondary" sx={{ ml: 2 }}>
-              - {auction.name}
-            </Typography>
-          )}
-        </Box>        <Button
-          variant="outlined"
-          startIcon={<ArrowBackIcon />}
-          onClick={() => router.push('/auctions')}
-        >
-          {t("manageLots_backToAuctions", lang)}
-        </Button>
+        </Box>
       </Box>
 
       {/* Tabs */}

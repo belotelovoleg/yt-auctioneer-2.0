@@ -52,10 +52,16 @@ export async function GET(
     });    if (!auction) {
       return NextResponse.json({ error: 'Auction not found' }, { status: 404 });
     }
+    
+    // Calculate the total used discount from all lots
+    const totalDiscountUsed = auction.auctionLots.reduce((sum, auctionLot) => {
+      return sum + Number(auctionLot.lot.discount || 0);
+    }, 0);
 
-    // Add calculatedPrice to lots
+    // Add calculatedPrice to lots and update discountUsed
     const auctionWithCalculatedPrice = {
       ...auction,
+      discountUsed: totalDiscountUsed, // Use the calculated total discount
       auctionLots: auction.auctionLots.map(al => ({
         ...al,
         lot: {
@@ -208,11 +214,15 @@ export async function PATCH(
           },
         },
       },
-    });
+    });    // Calculate the total used discount from all lots
+    const totalDiscountUsed = updatedAuction.auctionLots.reduce((sum, auctionLot) => {
+      return sum + Number(auctionLot.lot.discount || 0);
+    }, 0);
 
-    // Add calculatedPrice to lots
+    // Add calculatedPrice to lots and update discountUsed
     const auctionWithCalculatedPrice = {
       ...updatedAuction,
+      discountUsed: totalDiscountUsed, // Use the calculated total discount
       auctionLots: updatedAuction.auctionLots.map(al => ({
         ...al,
         lot: {

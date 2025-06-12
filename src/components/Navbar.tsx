@@ -270,7 +270,6 @@ export default function Navbar({}: NavbarProps) {
     { key: 'auctions', icon: <AuctionIcon />, text: t('nav_auctions', lang), path: '/auctions' },
     { key: 'lots', icon: <AuctionIcon />, text: t('nav_lots', lang), path: '/lots' },
     { key: 'profile', icon: <ProfileIcon />, text: t('nav_profile', lang), path: '/profile' },
-    { key: 'settings', icon: <SettingsIcon />, text: t('nav_settings', lang), path: '/settings' },
   ];
 
   const menuItems = user ? userMenuItems : guestMenuItems;

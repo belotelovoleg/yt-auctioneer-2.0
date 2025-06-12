@@ -136,7 +136,8 @@ export default function LiveAuctionPage() {
       const response = await fetch(`/api/auctions/${auctionId}/lots?t=${Date.now()}`);      if (response.ok) {
         const data = await response.json();
         setAuction(data);
-        
+        setDiscountAmount(data.discountPool.toString() || '0');
+
         // Find which lot is currently being sold
         const sellingLot = data.auctionLots?.find((auctionLot: AuctionLot) => 
           auctionLot.lot.status === 'BEING_SOLD'
@@ -181,7 +182,6 @@ export default function LiveAuctionPage() {
       document.activeElement.blur();
     }
     setDiscountDialogOpen(false);
-    setDiscountAmount('');
   };
 
   const handleDiscountViewDialogClose = () => {
@@ -199,7 +199,7 @@ export default function LiveAuctionPage() {
 
   const handleDiscountPoolUpdate = async () => {
     const amount = parseFloat(discountAmount);
-    if (isNaN(amount) || amount <= 0) {      setAlertMessage({
+    if (isNaN(amount) || amount < 0) {      setAlertMessage({
         type: "error",
         message: t("lotSelection_invalidAmount", lang),
       });
@@ -442,8 +442,7 @@ export default function LiveAuctionPage() {
               gap: { xs: 1, sm: 2 },
               justifyContent: 'space-around'
             }}
-          >
-            <Box 
+          >            <Box 
               sx={{ 
                 textAlign: 'center', 
                 flex: 1,
@@ -458,7 +457,7 @@ export default function LiveAuctionPage() {
                 {t("lotSelection_totalPool", lang)}
               </Typography>
               <Typography variant="h6" color="primary.main" sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
-                {auction.discountPool || 0}
+                {auction?.discountPool || 0}
               </Typography>
             </Box>
             
@@ -477,7 +476,7 @@ export default function LiveAuctionPage() {
                 {t("lotSelection_used", lang)}
               </Typography>
               <Typography variant="h6" color="error.main" sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
-                {auction.discountUsed || 0}
+                {auction?.discountUsed || 0}
               </Typography>
             </Box>
             
@@ -496,7 +495,7 @@ export default function LiveAuctionPage() {
                 {t("lotSelection_available", lang)}
               </Typography>
               <Typography variant="h6" color="success.main" sx={{ fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
-                {(auction.discountPool || 0) - (auction.discountUsed || 0)}
+                {(auction?.discountPool || 0) - (auction?.discountUsed || 0)}
               </Typography>
             </Box>
           </Box>
@@ -572,10 +571,9 @@ export default function LiveAuctionPage() {
                   })
                 }}
               >
-                {t('lotSelection_discountButton', lang)}
-                {auction.discountPool > 0 && (
+                {t('lotSelection_discountButton', lang)}                {auction?.discountPool > 0 && (
                   <Chip
-                    label={`${(auction.discountPool || 0) - (auction.discountUsed || 0)}`}
+                    label={`${(auction?.discountPool || 0) - (auction?.discountUsed || 0)}`}
                     size="small"
                     color={discountAccordionExpanded ? "secondary" : "primary"}
                     variant={discountAccordionExpanded ? "filled" : "outlined"}
@@ -588,11 +586,10 @@ export default function LiveAuctionPage() {
                   />
                 )}
               </Button>
-              
-              {/* Mobile: Available Count Badge */}
-              {auction.discountPool > 0 && (
+                {/* Mobile: Available Count Badge */}
+              {auction?.discountPool > 0 && (
                 <Chip
-                  label={`${(auction.discountPool || 0) - (auction.discountUsed || 0)}`}
+                  label={`${(auction?.discountPool || 0) - (auction?.discountUsed || 0)}`}
                   size="small"
                   color={discountAccordionExpanded ? "secondary" : "primary"}
                   variant="filled"
@@ -1080,8 +1077,7 @@ export default function LiveAuctionPage() {
                   flexDirection: { xs: 'column', sm: 'row' },
                   gap: { xs: 2, sm: 0 }
                 }}
-              >
-                <Box textAlign="center">
+              >                <Box textAlign="center">
                   <Typography 
                     variant="subtitle2" 
                     color="text.secondary"
@@ -1094,7 +1090,7 @@ export default function LiveAuctionPage() {
                     color="primary.main"
                     sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
                   >
-                    {auction.discountPool || 0}
+                    {auction?.discountPool || 0}
                   </Typography>                </Box>
                 <Box textAlign="center">
                   <Typography 
@@ -1109,7 +1105,7 @@ export default function LiveAuctionPage() {
                     color="error.main"
                     sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
                   >
-                    {auction.discountUsed || 0}
+                    {auction?.discountUsed || 0}
                   </Typography>
                 </Box>
                 <Box textAlign="center">
@@ -1125,7 +1121,7 @@ export default function LiveAuctionPage() {
                     color="success.main"
                     sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
                   >
-                    {(auction.discountPool || 0) - (auction.discountUsed || 0)}
+                    {(auction?.discountPool || 0) - (auction?.discountUsed || 0)}
                   </Typography>
                 </Box>
               </Box>

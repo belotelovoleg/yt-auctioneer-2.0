@@ -46,14 +46,23 @@ export async function GET(
           },
         },
       },
-    });
-
-    if (!auction) {
+    });    if (!auction) {
       return NextResponse.json({ error: 'Auction not found' }, { status: 404 });
-    }    return NextResponse.json({
+    }
+    
+    // Calculate the total used discount from all lots
+    const totalDiscountUsed = auction.auctionLots.reduce((sum, auctionLot) => {
+      return sum + Number(auctionLot.lot.discount || 0);
+    }, 0);
+
+    return NextResponse.json({
       id: auction.id,
       name: auction.name,
       status: auction.status,
+      youtubeVideoId: auction.youtubeVideoId,
+      youtubeChannelId: auction.youtubeChannelId,
+      discountPool: auction.discountPool,
+      discountUsed: totalDiscountUsed, // Use the calculated total discount instead of the stored value
       auctionLots: auction.auctionLots.map(al => ({
         id: al.id,
         order: al.order,

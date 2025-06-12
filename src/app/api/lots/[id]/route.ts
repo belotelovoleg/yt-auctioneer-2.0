@@ -59,7 +59,17 @@ export async function PUT(
         { error: 'Name is required' },
         { status: 400 }
       );
-    }    const lot = await prisma.lot.update({
+    }    // Find the parent auction if this lot is part of an auction
+    const auctionLot = await prisma.auctionLot.findFirst({
+      where: {
+        lotId: lotId
+      },
+      include: {
+        auction: true
+      }
+    });
+
+    const lot = await prisma.lot.update({
       where: { id: lotId },
       data: {
         name,
@@ -72,6 +82,34 @@ export async function PUT(
         useTimer: useTimer !== undefined ? useTimer : existingLot.useTimer,
       },
     });
+
+    // If this lot is part of an auction, recalculate the discountUsed field for the auction
+    if (auctionLot) {
+      // Get all lots in this auction to calculate the total discount
+      const allAuctionLots = await prisma.auctionLot.findMany({
+        where: {
+          auctionId: auctionLot.auctionId
+        },
+        include: {
+          lot: true
+        }
+      });
+
+      // Calculate the total discount used
+      const totalDiscountUsed = allAuctionLots.reduce((sum, al) => {
+        return sum + Number(al.lot.discount || 0);
+      }, 0);
+
+      // Update the auction's discountUsed field
+      await prisma.auction.update({
+        where: {
+          id: auctionLot.auctionId
+        },
+        data: {
+          discountUsed: totalDiscountUsed
+        }
+      });
+    }
 
     // Add calculatedPrice to response
     const lotWithCalculatedPrice = {
@@ -169,10 +207,48 @@ export async function PATCH(
     }
     if (status !== undefined) {
       updateData.status = status;
-    }const updatedLot = await prisma.lot.update({
+    }    // Find the parent auction if this lot is part of an auction
+    const auctionLot = await prisma.auctionLot.findFirst({
+      where: {
+        lotId: lotId
+      },
+      include: {
+        auction: true
+      }
+    });
+
+    const updatedLot = await prisma.lot.update({
       where: { id: lotId },
       data: updateData,
     });
+
+    // If this lot is part of an auction and discount was updated, recalculate the discountUsed field for the auction
+    if (auctionLot && discount !== undefined) {
+      // Get all lots in this auction to calculate the total discount
+      const allAuctionLots = await prisma.auctionLot.findMany({
+        where: {
+          auctionId: auctionLot.auctionId
+        },
+        include: {
+          lot: true
+        }
+      });
+
+      // Calculate the total discount used
+      const totalDiscountUsed = allAuctionLots.reduce((sum, al) => {
+        return sum + Number(al.lot.discount || 0);
+      }, 0);
+
+      // Update the auction's discountUsed field
+      await prisma.auction.update({
+        where: {
+          id: auctionLot.auctionId
+        },
+        data: {
+          discountUsed: totalDiscountUsed
+        }
+      });
+    }
 
     // Add calculatedPrice to response
     const lotWithCalculatedPrice = {
