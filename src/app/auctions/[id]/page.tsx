@@ -36,6 +36,7 @@ import {
   PlayArrow as StartSellingIcon,
   LocalOffer as DiscountIcon,
   Visibility as ViewIcon,
+  VisibilityOff as HideIcon,
   ExpandMore as ExpandMoreIcon,
   Schedule as ScheduledIcon,
   CheckCircle as ReadyIcon,
@@ -97,6 +98,8 @@ export default function LiveAuctionPage() {
   const [discountAmount, setDiscountAmount] = useState<string>('');
   const [discountAccordionExpanded, setDiscountAccordionExpanded] = useState(false);  // Add useState for the search filter
   const [searchFilter, setSearchFilter] = useState<string>('');
+  // Add useState for hiding sold lots
+  const [hideSoldLots, setHideSoldLots] = useState<boolean>(true);
   // Track which lot is currently being sold
   const [currentlySellingLotId, setCurrentlySellingLotId] = useState<number | null>(null);
   // Finish auction dialog state
@@ -265,11 +268,16 @@ export default function LiveAuctionPage() {
       });
     }
   };
-
-  // Filter the lots based on the search term
-  const filteredLots = auction?.auctionLots?.filter(auctionLot =>
-    auctionLot.lot.name.toLowerCase().includes(searchFilter.toLowerCase())
-  ) || [];
+  // Filter the lots based on search term and sold status
+  const filteredLots = auction?.auctionLots?.filter(auctionLot => {
+    // Filter by search term
+    const matchesSearch = auctionLot.lot.name.toLowerCase().includes(searchFilter.toLowerCase());
+    
+    // Filter by sold status if hideSoldLots is true
+    const matchesSoldFilter = hideSoldLots ? auctionLot.lot.status !== 'SOLD' : true;
+    
+    return matchesSearch && matchesSoldFilter;
+  }) || [];
 
   if (loading || !user || isLoading) {
     return (
@@ -500,11 +508,49 @@ export default function LiveAuctionPage() {
             </Box>
           </Box>
         </Box>
-      </Box>{/* Instructions */}
+      </Box>{/* Instructions and Controls */}
       <Box sx={{ mb: 3 }}>
-        <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
-          {t('lotSelection_instructions', lang)}
-        </Typography>
+        <Box sx={{ 
+          display: 'flex', 
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          mb: 2,
+          flexWrap: 'wrap',
+          gap: 2
+        }}>
+          <Typography 
+            variant="body1" 
+            color="text.secondary" 
+            sx={{ 
+              maxWidth: '70%',
+              fontSize: { xs: '0.875rem', sm: '1rem' }
+            }}
+          >
+            {t('lotSelection_shortInstructions', lang)}
+          </Typography>
+          
+          <Box sx={{ 
+            display: 'flex', 
+            alignItems: 'center',
+            gap: 1 
+          }}>
+            <Typography variant="body2" color="text.secondary">
+              {t('lotSelection_showSold', lang)}
+            </Typography>            <Chip
+              icon={hideSoldLots ? <HideIcon fontSize="small" /> : <ViewIcon fontSize="small" />}
+              color={hideSoldLots ? "default" : "primary"}
+              size="small"
+              onClick={() => setHideSoldLots(!hideSoldLots)}
+              sx={{ 
+                cursor: 'pointer',
+                pl: 0.5, // Less left padding since we're using icon only
+                '& .MuiChip-label': {
+                  pl: 0 // Remove label padding since we only have an icon
+                }
+              }}
+            />
+          </Box>
+        </Box>
           {/* Discount, Search, and Finish Auction Button Row */}
         <Box sx={{ 
           display: 'flex', 
@@ -1061,94 +1107,52 @@ export default function LiveAuctionPage() {
             maxHeight: { xs: 'calc(100vh - 32px)', sm: 'auto' }
           }
         }}
-      >
-        <DialogTitle sx={{ pb: 1, fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
-          {t("lotSelection_discountUsageOverview", lang)}
-        </DialogTitle>
-        <DialogContent sx={{ pb: 1 }}>
-          <Box sx={{ mb: 2 }}>
-            <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
-              {t("lotSelection_poolSummary", lang)}
-            </Typography>            <Paper sx={{ p: { xs: 1.5, sm: 2 }, mb: 2 }}>
-              <Box 
-                display="flex" 
-                justifyContent="space-between"
-                sx={{
-                  flexDirection: { xs: 'column', sm: 'row' },
-                  gap: { xs: 2, sm: 0 }
-                }}
-              >                <Box textAlign="center">
-                  <Typography 
-                    variant="subtitle2" 
-                    color="text.secondary"
-                    sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}
-                  >
-                    {t("lotSelection_totalPool", lang)}
-                  </Typography>
-                  <Typography 
-                    variant="h5" 
-                    color="primary.main"
-                    sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
-                  >
-                    {auction?.discountPool || 0}
-                  </Typography>                </Box>
-                <Box textAlign="center">
-                  <Typography 
-                    variant="subtitle2" 
-                    color="text.secondary"
-                    sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}
-                  >
-                    {t("lotSelection_used", lang)}
-                  </Typography>
-                  <Typography 
-                    variant="h5" 
-                    color="error.main"
-                    sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
-                  >
-                    {auction?.discountUsed || 0}
-                  </Typography>
-                </Box>
-                <Box textAlign="center">
-                  <Typography 
-                    variant="subtitle2" 
-                    color="text.secondary"
-                    sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}
-                  >
-                    {t("lotSelection_available", lang)}
-                  </Typography>
-                  <Typography 
-                    variant="h5" 
-                    color="success.main"
-                    sx={{ fontSize: { xs: '1.5rem', sm: '2rem' } }}
-                  >
-                    {(auction?.discountPool || 0) - (auction?.discountUsed || 0)}
-                  </Typography>
-                </Box>
-              </Box>
-            </Paper>
-          </Box>          
-          <Typography 
-            variant="h6" 
-            gutterBottom
-            sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}
-          >
-            {t("lotSelection_lotDiscounts", lang)}
-          </Typography>
-          <List sx={{ maxHeight: { xs: 200, sm: 300 }, overflow: 'auto' }}>
-            {auction.auctionLots.map((auctionLot) => (
-              <ListItem key={auctionLot.id} sx={{ py: { xs: 0.5, sm: 1 } }}>
-                <ListItemText
-                  primary={auctionLot.lot.name}
-                  secondary={`${t("lotSelection_discountApplied", lang)} ${auctionLot.lot.discount || 0}`}
-                  primaryTypographyProps={{
-                    fontSize: { xs: '0.875rem', sm: '1rem' }
+      >        <DialogTitle sx={{ pb: 1, fontSize: { xs: '1.1rem', sm: '1.25rem' } }}>
+          {t("lotSelection_lotDiscounts", lang)}
+        </DialogTitle><DialogContent sx={{ pb: 1 }}>            <List sx={{ maxHeight: { xs: 300, sm: 400 }, overflow: 'auto' }}>
+            {auction.auctionLots
+              .filter((auctionLot) => auctionLot.lot.discount && Number(auctionLot.lot.discount) > 0)
+              .map((auctionLot) => (
+                <ListItem 
+                  key={auctionLot.id} 
+                  sx={{ 
+                    py: { xs: 0.75, sm: 1 },
+                    borderBottom: '1px solid',
+                    borderColor: 'divider',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center'
                   }}
-                  secondaryTypographyProps={{
-                    fontSize: { xs: '0.75rem', sm: '0.875rem' }
-                  }}
-                />
-              </ListItem>
-            ))}
+                >
+                  <Typography 
+                    sx={{ 
+                      flex: 1,
+                      fontSize: { xs: '0.9rem', sm: '1rem' },
+                      fontWeight: 500,
+                      pr: 2,
+                      maxWidth: '70%',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      whiteSpace: 'nowrap'
+                    }}
+                  >
+                    {auctionLot.lot.name}
+                  </Typography>
+                  <Chip
+                    icon={<DiscountIcon fontSize="small" />}
+                    label={`-${auctionLot.lot.discount || 0}`}
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: '0.95rem',
+                      bgcolor: 'primary.light',
+                      color: 'primary.contrastText',
+                      '& .MuiChip-icon': {
+                        color: 'inherit'
+                      }
+                    }}
+                  />
+                </ListItem>
+              ))}
           </List>
         </DialogContent>        <DialogActions sx={{ px: 3, pb: 2 }}>
           <Button 

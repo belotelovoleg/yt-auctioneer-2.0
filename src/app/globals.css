@@ -3,6 +3,39 @@
   --foreground: #171717;
 }
 
+/* Import perfect-scrollbar styles */
+@import 'react-perfect-scrollbar/dist/css/styles.css';
+
+/* Custom scrollbar styling */
+.ps__rail-x,
+.ps__rail-y {
+  z-index: 10; /* Ensures scrollbars appear above content */
+  opacity: 0.6; /* Semi-transparent when visible */
+}
+
+.ps--active-x > .ps__rail-x,
+.ps--active-y > .ps__rail-y {
+  display: block;
+  background-color: transparent;
+}
+
+/* Custom styling for the scrollbar thumb */
+.ps__thumb-x,
+.ps__thumb-y {
+  background-color: #888; /* Scrollbar color */
+  border-radius: 6px;
+}
+
+/* Adjust scrollbar position */
+.ps__rail-y {
+  right: 0 !important;
+}
+
+.ps__rail-x:hover > .ps__thumb-x,
+.ps__rail-y:hover > .ps__thumb-y {
+  background-color: #666; /* Darker color on hover */
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -13,15 +46,18 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow: hidden; /* Changed from overflow-x to ensure the perfect-scrollbar controls all scrolling */
+  height: 100%;
 }
 
 body {
   color: var(--foreground);
+  height: 100%;
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-right: 0 !important; 
 }
 
 * {

@@ -29,6 +29,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-image-crop": "^11.0.10",
+    "react-perfect-scrollbar": "^1.5.8",
     "xlsx": "^0.18.5"
   },
   "devDependencies": {

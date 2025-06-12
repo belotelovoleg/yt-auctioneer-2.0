@@ -347,11 +347,10 @@ export default function LiveSellingPage() {
       return false;
     }
   };
-
-  // Auto-scroll to latest bid
+  // Always show the top bids (highest bids) at the top of the list
   useEffect(() => {
     if (bidsListRef.current) {
-      bidsListRef.current.scrollTop = bidsListRef.current.scrollHeight;
+      bidsListRef.current.scrollTop = 0; // Scroll to top instead of bottom
     }
   }, [databaseBids]);
   // Timer countdown (only if timer is enabled)

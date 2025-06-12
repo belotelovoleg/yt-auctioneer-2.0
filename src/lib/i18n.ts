@@ -240,7 +240,8 @@ export const translations = {
     lotSelection_noLotsDescription: "Add some lots to start selling",
     lotSelection_auctionNotReady: "This auction is not ready for live selling. Please start the auction first.",
     lotSelection_estimatedTime: "Est. Time",
-    lotSelection_orderInSequence: "Order",    lotSelection_discountPoolManagement: "Discount Pool Management",
+    lotSelection_orderInSequence: "Order",    
+    lotSelection_discountPoolManagement: "Discount Pool Management",
     lotSelection_discountButton: "Discount",
     lotSelection_setPool: "Set Pool",
     lotSelection_viewUsage: "View Usage",
@@ -258,8 +259,9 @@ export const translations = {
     lotSelection_poolSummary: "Pool Summary",
     lotSelection_lotDiscounts: "Lot Discounts",    lotSelection_discountApplied: "Discount applied:",    lotSelection_close: "Close",    lotSelection_auctionNotFound: "Auction not found",
     lotSelection_failedToUpdatePool: "Failed to update discount pool",
-    lotSelection_invalidAmount: "Please enter a valid discount amount",
-    lotSelection_poolUpdated: "Discount pool set to {amount}",
+    lotSelection_invalidAmount: "Please enter a valid discount amount",    lotSelection_poolUpdated: "Discount pool set to {amount}",
+    lotSelection_shortInstructions: "Pick a lot to sell live",
+    lotSelection_showSold: "Show sold lots",
     
     // Manage Lots Page
     manageLots_back: "Back",
@@ -525,8 +527,9 @@ export const translations = {
     lotSelection_close: "Закрити",
     lotSelection_auctionNotFound: "Аукціон не знайдено",
     lotSelection_failedToUpdatePool: "Не вдалося оновити пул знижок",
-    lotSelection_invalidAmount: "Будь ласка, введіть правильну суму знижки",
-    lotSelection_poolUpdated: "Пул знижок встановлено на {amount}",
+    lotSelection_invalidAmount: "Будь ласка, введіть правильну суму знижки",    lotSelection_poolUpdated: "Пул знижок встановлено на {amount}",
+    lotSelection_shortInstructions: "Що будемо продавати?",
+    lotSelection_showSold: "Продані лоти",
     
     // Manage Lots Page
     manageLots_back: "Назад",
