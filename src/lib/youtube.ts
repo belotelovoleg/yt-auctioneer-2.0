@@ -38,7 +38,8 @@ interface ChatResponse {
 export class YouTubeService {
   private static readonly API_KEY = process.env.YOUTUBE_API_KEY;
   private static readonly BASE_URL = 'https://www.googleapis.com/youtube/v3';
-  private static readonly MIN_POLLING_INTERVAL = 10000; // 10 seconds minimum
+  private static readonly MIN_POLLING_INTERVAL = 5000; // 5 seconds minimum (reduced from 10s)
+  private static readonly PROD_MIN_POLLING_INTERVAL = 7000; // 7 seconds minimum for production
   
   // Cache for live chat IDs to prevent unnecessary API calls
   private static liveChatIdCache = new Map<string, {
@@ -130,47 +131,92 @@ export class YouTubeService {
    * Get live chat messages
    * @param liveChatId Live chat ID
    * @param pageToken Optional page token for pagination
-   * @returns Chat messages and next page token
-   */  static async getChatMessages(liveChatId: string, pageToken?: string): Promise<{
+   * @returns Chat messages and next page token   */  static async getChatMessages(liveChatId: string, pageToken?: string, retryCount = 0): Promise<{
     messages: ChatMessage[];
     nextPageToken?: string;
     pollingInterval: number;
   }> {
+    const MAX_RETRIES = 3;
+    const RETRY_DELAY = 2000; // 2 seconds base delay
+    
     if (!this.API_KEY) {
       console.log('❌ YouTube Service: API key not configured for chat messages');
       throw new Error('YouTube API key not configured');
-    }    try {
+    }
+    
+    try {
       // Only request the specific fields we actually use to minimize quota usage (removed channelId)
       let url = `${this.BASE_URL}/liveChat/messages?liveChatId=${liveChatId}&part=snippet,authorDetails&fields=items(id,snippet(publishedAt,textMessageDetails/messageText),authorDetails(displayName,profileImageUrl)),nextPageToken,pollingIntervalMillis&key=${this.API_KEY}`;
       
       if (pageToken) {
         url += `&pageToken=${pageToken}`;
-      }      const response = await fetch(url);
-      
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`YouTube API error: ${response.status} ${response.statusText}`);
       }
-
-      const data: ChatResponse = await response.json();
       
-      // Use YouTube's recommended interval, but never go below 10 seconds (for rate limiting)
-      const youtubeRecommended = data.pollingIntervalMillis || this.MIN_POLLING_INTERVAL;
-      const pollingInterval = Math.max(youtubeRecommended, this.MIN_POLLING_INTERVAL);
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000); // 15-second timeout
+      
+      try {
+        const response = await fetch(url, { 
+          signal: controller.signal,
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache'
+          }
+        });
+        clearTimeout(timeoutId);
+        
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`YouTube API error: ${response.status} ${response.statusText}`);
+        }
 
-      const bidsCount = this.extractBids(data.items).length;
-      console.log(`⏰ ${new Date().toLocaleTimeString()}: Getting messages`);
-      console.log(`📊 Got ${data.items.length} messages with ${bidsCount} bids in them`);
-      console.log(`🔄 YT recommended polling interval - ${pollingInterval}ms (will do request in ${Math.round(pollingInterval / 1000)} seconds)`);
+        const data: ChatResponse = await response.json();
+        
+        // Use YouTube's recommended interval, but never go below our minimum
+        // Use different minimums for dev and prod environments
+        const youtubeRecommended = data.pollingIntervalMillis || this.MIN_POLLING_INTERVAL;
+        const minInterval = process.env.NODE_ENV === 'production' 
+          ? this.PROD_MIN_POLLING_INTERVAL 
+          : this.MIN_POLLING_INTERVAL;
+        
+        const pollingInterval = Math.max(youtubeRecommended, minInterval);
 
-      return {
-        messages: data.items,
-        nextPageToken: data.nextPageToken,
-        pollingInterval,
-      };
+        // Add timestamp to logs for easier debugging
+        const timestamp = new Date().toISOString();
+        const bidsCount = this.extractBids(data.items).length;
+        console.log(`⏰ ${timestamp}: Getting messages`);
+        console.log(`📊 Got ${data.items.length} messages with ${bidsCount} bids in them`);
+        console.log(`🔄 YT recommended polling interval - ${pollingInterval}ms (will do request in ${Math.round(pollingInterval / 1000)} seconds)`);
+        console.log(`💡 Environment: ${process.env.NODE_ENV}, Using minimum interval: ${minInterval}ms`);
+
+        return {
+          messages: data.items,
+          nextPageToken: data.nextPageToken,
+          pollingInterval,
+        };
+      } finally {
+        clearTimeout(timeoutId);
+      }
     } catch (error) {
-      console.error('❌ YouTube Service: Error getting chat messages:', error);
-      throw error;
+      // Check if we should retry
+      if (retryCount < MAX_RETRIES) {
+        console.warn(`⚠️ YouTube API error (attempt ${retryCount + 1}/${MAX_RETRIES + 1}), retrying in ${RETRY_DELAY * (2 ** retryCount)}ms:`, error);
+        
+        // Exponential backoff: wait longer for each retry
+        await new Promise(resolve => setTimeout(resolve, RETRY_DELAY * (2 ** retryCount)));
+        
+        // Retry with incremented count
+        return this.getChatMessages(liveChatId, pageToken, retryCount + 1);
+      }
+      
+      console.error('❌ YouTube Service: Error getting chat messages after retries:', error);
+      
+      // Return empty result instead of throwing after max retries
+      // This allows the background monitor to continue working even if YouTube API has temporary issues
+      return {
+        messages: [],
+        pollingInterval: 60000, // Use a longer interval after failure (1 minute)
+      };
     }
   }
 

@@ -26,20 +26,24 @@ interface LogEntry {
 
 export class BackgroundAuctionMonitor {
   private static monitoringJobs = new Map<string, MonitoringJob>();
-  private static isInitialized = false;
-  private static logs = new Map<string, LogEntry[]>(); // Keep in-memory for backward compatibility
-  private static globalLogs: LogEntry[] = [];  private static readonly MAX_LOGS_PER_JOB = 100;
+  private static isInitialized = false;  private static logs = new Map<string, LogEntry[]>(); // Keep in-memory for backward compatibility
+  private static globalLogs: LogEntry[] = [];  
+  private static readonly MAX_LOGS_PER_JOB = 100;
   private static readonly MAX_GLOBAL_LOGS = 200;
   private static readonly LOGS_DIR = '/tmp/logs/monitor'; // Use /tmp for AWS Lambda
   private static readonly GLOBAL_LOG_FILE = path.join(BackgroundAuctionMonitor.LOGS_DIR, 'global.jsonl');
   private static readonly IS_LAMBDA = process.env.AWS_LAMBDA_FUNCTION_NAME !== undefined;
+  private static readonly IS_SERVERLESS = process.env.AWS_LAMBDA_FUNCTION_NAME !== undefined || 
+    process.env.AWS_REGION !== undefined || 
+    process.env.VERCEL !== undefined || 
+    process.env.NEXT_PUBLIC_VERCEL_ENV !== undefined;
   
   /**
-   * Ensure logs directory exists (only in non-Lambda environments)
+   * Ensure logs directory exists (only in non-serverless environments)
    */
   private static ensureLogsDirectory() {
-    // Skip file logging in Lambda environment
-    if (BackgroundAuctionMonitor.IS_LAMBDA) {
+    // Skip file logging in serverless environments
+    if (BackgroundAuctionMonitor.IS_SERVERLESS) {
       return;
     }
     
@@ -48,16 +52,18 @@ export class BackgroundAuctionMonitor {
         fs.mkdirSync(BackgroundAuctionMonitor.LOGS_DIR, { recursive: true });
       }
     } catch (error) {
-      console.warn('Could not create logs directory:', error);
+      // If directory creation fails, just log to console and continue
+      console.warn('Unable to create logs directory, will use in-memory logs only:', error);
     }
   }
 
   /**
    * Get log file path for a specific job
-   */
-  private static getJobLogFile(auctionId: number, lotId: number): string {
+   */  private static getJobLogFile(auctionId: number, lotId: number): string {
     return path.join(BackgroundAuctionMonitor.LOGS_DIR, `job-${auctionId}-${lotId}.jsonl`);
-  }/**
+  }
+
+  /**
    * Add a log entry to the appropriate buffer (per-job or global) and write to files
    */
   private static addLog(level: LogEntry['level'], message: string, auctionId?: number, lotId?: number, metadata?: any) {
@@ -349,10 +355,11 @@ export class BackgroundAuctionMonitor {
     }
     
     this.addLog('INFO', `Cleaned up logs for monitoring job`, auctionId, lotId);
-  }/**
+  }  /**
    * Initialize background monitoring service
    * Called when server starts
-   */  static async initialize() {
+   */
+  static async initialize() {
     if (this.isInitialized) {
       this.addLog('INFO', 'Background auction monitor already initialized');
       return;
@@ -360,10 +367,16 @@ export class BackgroundAuctionMonitor {
 
     // Set initialized flag immediately to prevent race conditions
     this.isInitialized = true;
-    this.addLog('INFO', 'Initializing background auction monitor...');
+    
+    // Log initialization with more details
+    const envType = process.env.NODE_ENV || 'unknown';
+    const isServerless = this.IS_SERVERLESS ? 'yes' : 'no';
+    this.addLog('INFO', `Initializing background auction monitor... (env: ${envType}, serverless: ${isServerless})`);
+    console.log(`🔄 Initializing background auction monitor... (env: ${envType}, serverless: ${isServerless})`);
 
     try {
       // Find all lots currently being sold and start monitoring them
+      console.log(`🔍 Finding active lots to monitor...`);
       const activeLots = await (prisma as any).lot.findMany({
         where: { status: 'BEING_SOLD' },
         include: {
@@ -375,34 +388,43 @@ export class BackgroundAuctionMonitor {
         }
       });
 
-      this.addLog('INFO', `Found ${activeLots.length} active lots to monitor`);
+      const lotsCount = activeLots.length;
+      this.addLog('INFO', `Found ${lotsCount} active lots to monitor`);
+      console.log(`✅ Found ${lotsCount} active lots to monitor`);
 
       let monitoringStarted = 0;
       for (const lot of activeLots) {
         for (const auctionLot of lot.auctionLots) {
           if (auctionLot.auction.youtubeVideoId || auctionLot.auction.youtubeChannelId) {
+            console.log(`🚀 Starting monitor for auction ${auctionLot.auction.id}, lot ${lot.id}...`);
             const started = await this.startMonitoring(auctionLot.auction.id, lot.id);
             
             if (started) {
               monitoringStarted++;
               this.addLog('INFO', `Started monitoring`, auctionLot.auction.id, lot.id);
+              console.log(`✅ Started monitoring for auction ${auctionLot.auction.id}, lot ${lot.id}`);
             } else {
               this.addLog('ERROR', `Failed to start monitoring`, auctionLot.auction.id, lot.id);
+              console.error(`❌ Failed to start monitoring for auction ${auctionLot.auction.id}, lot ${lot.id}`);
             }
           }
         }
       }
 
       this.addLog('INFO', `Background auction monitor initialized successfully (${monitoringStarted} jobs started)`);
+      console.log(`🎉 Background auction monitor initialized successfully (${monitoringStarted}/${lotsCount} jobs started)`);
 
     } catch (error) {
       this.addLog('ERROR', 'Failed to initialize background auction monitor', undefined, undefined, error);
+      console.error('❌ Failed to initialize background auction monitor:', error);
       // Reset flag on error so it can be retried
-      this.isInitialized = false;
-    }
-  }/**
+      this.isInitialized = false;    }
+  }
+
+  /**
    * Start monitoring a specific auction/lot
-   */  static async startMonitoring(auctionId: number, lotId: number): Promise<boolean> {
+   */
+  static async startMonitoring(auctionId: number, lotId: number): Promise<boolean> {
     const key = `${auctionId}-${lotId}`;    
     
     // Check if already monitoring this lot
@@ -481,18 +503,35 @@ export class BackgroundAuctionMonitor {
           auctionNotFoundCount: 0,
           lotNotFoundCount: 0
         });
-      }
-
-      // Create recursive processing function with dynamic delays
+      }      // Create recursive processing function with dynamic delays
       const recursiveProcessing = async () => {
+        const startTime = Date.now();
         await this.processLotBids(auctionId, lotId);
         
         // Schedule next execution if monitoring job still exists
         const job = this.monitoringJobs.get(key);
         if (job) {
-          job.interval = setTimeout(recursiveProcessing, job.currentPollingInterval);
+          // Calculate how much time the processing took
+          const processingTime = Date.now() - startTime;
+          
+          // Log processing time for performance monitoring
+          if (processingTime > 5000) {
+            this.addLog('WARN', `Slow processing cycle took ${processingTime}ms`, auctionId, lotId);
+          } else {
+            this.addLog('DEBUG', `Processing cycle took ${processingTime}ms`, auctionId, lotId);
+          }
+          
+          // Ensure we don't overwhelm the system by enforcing a minimum time between cycles
+          // If processing took longer than the polling interval, add a small buffer
+          let nextInterval = job.currentPollingInterval;
+          if (processingTime >= nextInterval) {
+            nextInterval = Math.max(1000, processingTime * 1.1); // 10% buffer
+            this.addLog('WARN', `Processing took longer than polling interval, adjusting to ${nextInterval}ms`, auctionId, lotId);
+          }
+          
+          job.interval = setTimeout(recursiveProcessing, nextInterval);
         }
-      };      // Update the existing job with the interval (placeholder job was already created)
+      };// Update the existing job with the interval (placeholder job was already created)
       const job = this.monitoringJobs.get(key);
       if (job) {
         // Clear any existing interval to prevent duplicate polling cycles
@@ -548,7 +587,8 @@ export class BackgroundAuctionMonitor {
     }
   }  /**
    * Stop monitoring a specific auction/lot
-   */  static async stopMonitoring(auctionId: number, lotId: number): Promise<boolean> {
+   */
+  static async stopMonitoring(auctionId: number, lotId: number): Promise<boolean> {
     const key = `${auctionId}-${lotId}`;
     const job = this.monitoringJobs.get(key);    try {
       // Always update database first, regardless of in-memory job state
@@ -647,92 +687,95 @@ export class BackgroundAuctionMonitor {
         return;
       }
 
-      // Build YouTube API URL
-      let apiUrl = '/api/youtube/chat?';
-      if (auction.youtubeVideoId) {
-        apiUrl += `videoId=${auction.youtubeVideoId}`;
-      } else if (auction.youtubeChannelId) {
-        apiUrl += `channelId=${auction.youtubeChannelId}`;
-      } else {
-        console.log(`⏸️  No YouTube configuration for auction ${auctionId}`);
-        return;
-      }
-
-      // Add pagination token if we have one
-      if (job.nextPageToken) {
-        apiUrl += `&pageToken=${job.nextPageToken}`;
-      }      // Make internal API calls to our own server
-      // Simple: localhost in dev, otherwise use request headers to determine our own URL
-      let baseUrl: string;
-      if (process.env.NODE_ENV === 'development') {
-        baseUrl = 'http://localhost:3000';
-      } else {
-        // In production, just use the same domain we're running on
-        baseUrl = 'https://' + (process.env.VERCEL_URL || 'localhost:3000');
-      }
+      // Directly call YouTube service instead of making internal HTTP request
+      let videoId = auction.youtubeVideoId;
+      let liveChatId;
       
-      const fullUrl = baseUrl.startsWith('http') ? `${baseUrl}${apiUrl}` : `https://${baseUrl}${apiUrl}`;
-      
-      console.log(`🔗 Constructed URL (${process.env.NODE_ENV}): ${fullUrl}`);
-      
-      const response = await fetch(fullUrl, {
-        headers: {
-          'x-internal-call': 'true',
-          'Content-Type': 'application/json'
+      try {
+        // First handle channel ID by getting the current live video
+        if (!videoId && auction.youtubeChannelId) {
+          videoId = await YouTubeService.getLiveVideoIdFromChannel(auction.youtubeChannelId);
+          if (!videoId) {
+            this.addLog('WARN', `No live video found for channel ${auction.youtubeChannelId}`, auctionId, lotId);
+            return;
+          }
         }
-      });
-      
-      if (!response.ok) {
-        console.error(`❌ YouTube API error for ${key}: HTTP ${response.status}`);
-        return;
-      }      const data = await response.json();
-      
-      // Log the API response details
-      const messageCount = data.messages ? data.messages.length : 0;
-      const bidCount = data.bids ? data.bids.length : 0;
-      this.addLog('INFO', `YouTube API response: ${messageCount} messages, ${bidCount} bids`, auctionId, lotId);
-      
-      // Debug: Log the polling interval from YouTube API
-      if (data.pollingInterval) {
-        this.addLog('DEBUG', `YouTube API recommended polling interval: ${data.pollingInterval}ms`, auctionId, lotId);
-      }      // Update next page token for pagination
-      if (data.nextPageToken) {
-        job.nextPageToken = data.nextPageToken;
-      }
-
-      // Update polling interval if YouTube provides a recommendation
-      if (data.pollingInterval && data.pollingInterval !== job.currentPollingInterval) {
-        const newInterval = Math.max(data.pollingInterval, 5000); // Minimum 5 seconds, respect YouTube's recommendations
-
-        if (newInterval !== job.currentPollingInterval) {
-          this.addLog('INFO', `Updated polling interval: ${job.currentPollingInterval}ms → ${newInterval}ms`, auctionId, lotId);
-          job.currentPollingInterval = newInterval;
+        
+        if (!videoId) {
+          this.addLog('WARN', `No YouTube configuration for auction ${auctionId}`, auctionId, lotId);
+          return;
         }
-      }
-
-      // Process chat bids if any
-      if (data.bids && data.bids.length > 0) {
-        this.addLog('INFO', `Processing ${data.bids.length} bids from YouTube chat`, auctionId, lotId);
-        const chatBids = data.bids.map((bid: any) => ({
-          authorName: bid.authorName || 'Unknown User',
-          authorPhotoUrl: bid.authorPhotoUrl || '',
-          timestamp: bid.timestamp || new Date().toISOString(),
-          amount: bid.amount,
-          messageId: `bg-${bid.timestamp}-${bid.authorName}-${Math.random()}`
-        }));
-
-        const result = await BidProcessingService.processYouTubeBids(
-          auctionId,
-          lotId,
-          chatBids
-        );        if (result.created > 0) {
-          this.addLog('INFO', `Background processed ${result.created} new bids`, auctionId, lotId);
-        }        if (result.errors.length > 0) {
-          this.addLog('WARN', `Background processing errors`, auctionId, lotId, result.errors);
+        
+        // Get live chat ID for the video
+        liveChatId = await YouTubeService.getLiveChatId(videoId);
+        
+        if (!liveChatId) {
+          this.addLog('WARN', `No live chat available for video ${videoId}`, auctionId, lotId);
+          return;
         }
-      } else {
-        this.addLog('DEBUG', `No bids found in this polling cycle`, auctionId, lotId);
-      }// Update last processed time
+        
+        // Get chat messages with pageToken if we have one
+        const chatResponse = await YouTubeService.getChatMessages(liveChatId, job.nextPageToken);
+        
+        // Log the API response details
+        const messageCount = chatResponse.messages ? chatResponse.messages.length : 0;
+        const extractedBids = YouTubeService.extractBids(chatResponse.messages);
+        const bidCount = extractedBids.length;
+        
+        this.addLog('INFO', `YouTube API response: ${messageCount} messages, ${bidCount} bids`, auctionId, lotId);
+        
+        // Debug: Log the polling interval from YouTube API
+        if (chatResponse.pollingInterval) {
+          this.addLog('DEBUG', `YouTube API recommended polling interval: ${chatResponse.pollingInterval}ms`, auctionId, lotId);
+        }
+        
+        // Update next page token for pagination
+        if (chatResponse.nextPageToken) {
+          job.nextPageToken = chatResponse.nextPageToken;
+        }
+
+        // Update polling interval if YouTube provides a recommendation
+        if (chatResponse.pollingInterval && chatResponse.pollingInterval !== job.currentPollingInterval) {
+          // For production, ensure a reasonable minimum interval
+          const minInterval = process.env.NODE_ENV === 'production' ? 7000 : 5000;
+          const newInterval = Math.max(chatResponse.pollingInterval, minInterval);
+
+          if (newInterval !== job.currentPollingInterval) {
+            this.addLog('INFO', `Updated polling interval: ${job.currentPollingInterval}ms → ${newInterval}ms`, auctionId, lotId);
+            job.currentPollingInterval = newInterval;
+          }
+        }
+
+        // Process chat bids if any
+        if (extractedBids.length > 0) {          this.addLog('INFO', `Processing ${extractedBids.length} bids from YouTube chat`, auctionId, lotId);
+          const chatBids = extractedBids.map(bid => ({
+            authorName: bid.user.name || 'Unknown User',
+            authorPhotoUrl: bid.user.avatar || '',
+            timestamp: bid.timestamp || new Date().toISOString(),
+            amount: bid.amount,
+            messageId: bid.messageId || `bg-${bid.timestamp}-${bid.user.name}-${Math.random()}`
+          }));
+
+          const result = await BidProcessingService.processYouTubeBids(
+            auctionId,
+            lotId,
+            chatBids
+          );
+
+          if (result.created > 0) {
+            this.addLog('INFO', `Background processed ${result.created} new bids`, auctionId, lotId);
+          }
+
+          if (result.errors.length > 0) {
+            this.addLog('WARN', `Background processing errors`, auctionId, lotId, result.errors);
+          }
+        } else {
+          this.addLog('DEBUG', `No bids found in this polling cycle`, auctionId, lotId);
+        }
+      } catch (ytError) {
+        this.addLog('ERROR', `YouTube API call failed`, auctionId, lotId, ytError);
+        console.error(`❌ YouTube API error for ${key}:`, ytError);
+      }      // Update last processed time
       job.lastProcessedTime = new Date();
       
       // Update database record with processing time
@@ -751,16 +794,33 @@ export class BackgroundAuctionMonitor {
         });
       } catch (dbError) {
         console.warn(`⚠️  Could not update database record for ${key}:`, dbError);
-      }} catch (error) {
-      console.error(`❌ Error processing bids for ${key}:`, error);
-        // On error, wait longer before next attempt to prevent spam
+      }
+    } catch (error) {
+      console.error(`❌ Error processing bids for ${key}:`, error);      // On error, wait longer before next attempt to prevent spam
       if (job.currentPollingInterval < 60000) {
-        const errorInterval = 60000; // 1 minute on error
+        const errorInterval = Math.min(job.currentPollingInterval * 1.5, 60000); // Gradually increase interval on errors, max 1 minute
         console.log(`⏱️  Error occurred - extending polling interval for ${key} to ${errorInterval}ms`);
         job.currentPollingInterval = errorInterval;
       }
+      
+      // Update database record with error info
+      try {
+        await (prisma as any).monitoringJob.update({
+          where: {
+            auctionId_lotId: { auctionId, lotId }
+          },
+          data: {
+            lastProcessedTime: new Date(),
+            currentPollingInterval: job.currentPollingInterval,
+            lastError: error instanceof Error ? error.message : String(error)
+          }        });
+      } catch (dbError) {
+        console.warn(`⚠️  Could not update error status in database:`, dbError);
+      }
     }
-  }  /**
+  }
+
+  /**
    * Get current monitoring status
    */
   static async getMonitoringStatus(): Promise<Array<{
@@ -793,13 +853,14 @@ export class BackgroundAuctionMonitor {
         auctionId: job.auctionId,
         lotId: job.lotId,
         lastProcessedTime: job.lastProcessedTime,
-        currentPollingInterval: job.currentPollingInterval,
-        isActive: true
+        currentPollingInterval: job.currentPollingInterval,        isActive: true
       }));
       
       return result;
     }
-  }/**
+  }
+
+  /**
    * Stop all monitoring (called on server shutdown)
    */
   static stopAll() {
@@ -851,7 +912,8 @@ export class BackgroundAuctionMonitor {
   }
   /**
    * Handle lot status changes
-   */  static async handleLotStatusChange(lotId: number, newStatus: string, auctionId?: number) {
+   */
+  static async handleLotStatusChange(lotId: number, newStatus: string, auctionId?: number) {
     console.log(`📋 Lot ${lotId} status changed to: ${newStatus}`);
 
     if (newStatus === 'BEING_SOLD') {

@@ -1,15 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { BackgroundAuctionMonitor } from '@/lib/backgroundMonitor';
+import { isBackgroundServicesInitialized } from '@/lib/backgroundServices';
 
 // GET /api/background-monitor/status - Get current monitoring status
 export async function GET(request: NextRequest) {
   try {
     const status = await BackgroundAuctionMonitor.getMonitoringStatus();
     
+    // Get initialization and environment status
+    const initStatus = {
+      backgroundServicesInitialized: isBackgroundServicesInitialized(),
+      monitorInitialized: (BackgroundAuctionMonitor as any).isInitialized === true,
+      isServerless: (BackgroundAuctionMonitor as any).IS_SERVERLESS === true,
+      environment: process.env.NODE_ENV || 'unknown',
+    };
+    
     const result = {
       success: true,
       activeJobs: status.length,
       jobs: status,
+      initialization: initStatus,
       summary: {
         totalJobs: status.length,
         jobsByAuction: status.reduce((acc: Record<number, number>, job) => {
@@ -19,7 +29,8 @@ export async function GET(request: NextRequest) {
         oldestJob: status.length > 0 ? Math.min(...status.map(job => 
           new Date().getTime() - new Date(job.lastProcessedTime).getTime()
         )) : 0
-      }
+      },
+      timestamp: new Date().toISOString()
     };
     
     return NextResponse.json(result);
