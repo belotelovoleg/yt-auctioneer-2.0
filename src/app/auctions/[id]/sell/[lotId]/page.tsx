@@ -704,78 +704,8 @@ export default function LiveSellingPage() {
       setErrorMessage('❌ Error testing background bid');
       setErrorDialogOpen(true);
     }
-  };  // Test timestamp filtering function
-  const handleTestTimestampFiltering = async () => {
-    if (!auctionId || !lotId || !lot) return;
-
-    try {
-      console.log('🧪 Testing timestamp filtering...');
-
-      // Create test bids: some old (before selling started), some new (after selling started)
-      const now = new Date();
-      const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000);
-      const fiveMinutesAgo = new Date(now.getTime() - 5 * 60 * 1000);
-
-      const testBids = [
-        {
-          authorName: 'OldBidder1',
-          authorPhotoUrl: '',
-          timestamp: oneHourAgo.toISOString(), // This should be filtered out
-          amount: Number(lot.calculatedPrice) + 50,
-          messageId: `test-old-${Date.now()}-1`
-        },
-        {
-          authorName: 'OldBidder2',
-          authorPhotoUrl: '',
-          timestamp: oneHourAgo.toISOString(), // This should be filtered out
-          amount: Number(lot.calculatedPrice) + 100,
-          messageId: `test-old-${Date.now()}-2`
-        },
-        {
-          authorName: 'RecentBidder1',
-          authorPhotoUrl: '',
-          timestamp: fiveMinutesAgo.toISOString(), // This should be processed (if after selling started)
-          amount: Number(lot.calculatedPrice) + 25,
-          messageId: `test-recent-${Date.now()}-1`
-        },
-        {
-          authorName: 'RecentBidder2',
-          authorPhotoUrl: '',
-          timestamp: now.toISOString(), // This should be processed
-          amount: Number(lot.calculatedPrice) + 75,
-          messageId: `test-recent-${Date.now()}-2`
-        }
-      ];
-
-      const response = await fetch('/api/test/timestamp-filtering', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          auctionId: parseInt(auctionId),
-          lotId: parseInt(lotId),
-          testBids
-        }),
-      });
-
-      const result = await response.json();
-      if (response.ok) {
-        console.log('✅ Timestamp filtering test results:', result);
-        await fetchDatabaseBids(); // Refresh bids
-        setErrorMessage(`✅ Timestamp filtering test completed!\n\nSent: ${testBids.length} test bids\nProcessed: ${result.result.processed}\nCreated: ${result.result.created}\n\nOld bids should be filtered out!`);
-        setErrorDialogOpen(true);
-      } else {
-        console.error('❌ Timestamp filtering test failed:', result.error);
-        setErrorMessage(`❌ Test failed: ${result.error}`);
-        setErrorDialogOpen(true);
-      }
-    } catch (error) {
-      console.error('Error testing timestamp filtering:', error);
-      setErrorMessage('❌ Error testing timestamp filtering');
-      setErrorDialogOpen(true);
-    }
-  };
+  };  
+  
 
   const formatCurrency = (amount: number | string | any): string => {
     const numAmount = typeof amount === 'number' ? amount : parseFloat(amount.toString());
